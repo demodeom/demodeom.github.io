@@ -1,7 +1,8 @@
 ---
 title: SpringBootSecurity
 date: 2022-05-09 13:37:22
-tags: SpringBoot
+tags: 
+    - SpringBoot
 ---
 
 SpringBootSecurity 自动登录、自动鉴权
