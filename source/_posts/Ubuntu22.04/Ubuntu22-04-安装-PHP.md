@@ -3,6 +3,7 @@ title: Ubuntu22.04 安装 PHP
 date: 2022-05-21 22:08:20
 tags:
 	- Ubuntu22.04
+cover: https://blog.image.codedemo.vip/Ubuntu22.04%2Fphp_PNG35.png
 ---
 
 Ubuntu22.04 安装并使用不同版本的 PHP

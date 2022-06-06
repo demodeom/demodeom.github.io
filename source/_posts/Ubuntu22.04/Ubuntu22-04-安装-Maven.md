@@ -3,6 +3,8 @@ title: Ubuntu22.04 安装 Maven
 date: 2022-05-21 22:57:14
 tags:
 	- Ubuntu22.04
+cover: https://blog.image.codedemo.vip/Ubuntu22.04%2Fmaven-logo-black-on-white.png
+
 ---
 
 Ubuntu22.04 安装、配置 Maven

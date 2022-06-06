@@ -3,6 +3,7 @@ title: Ubuntu22.04 安装 Node.js
 date: 2022-05-21 21:54:18
 tags:
 	- Ubuntu22.04
+cover: https://blog.image.codedemo.vip/Ubuntu22.04%2Fnodejs.jpg
 ---
 
  [Nvm](https://github.com/nvm-sh/nvm) 允许您通过命令行快速安装和使用不同版本的 Node.js 

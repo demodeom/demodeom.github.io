@@ -3,6 +3,7 @@ title: 稳定访问 GitHub
 date: 2022-05-21 21:15:54
 tags:
 	- GitHub
+cover: https://blog.image.codedemo.vip/Ubuntu22.04%2FOIP-C.1D5Nv4LrKi-KzQdbAKNeXAHaEK.jpeg
 ---
 
 通过本地 Nginx 代理的方式， 稳定访问 GitHub

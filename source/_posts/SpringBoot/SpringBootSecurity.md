@@ -3,6 +3,7 @@ title: SpringBootSecurity
 date: 2022-05-09 13:37:22
 tags: 
     - SpringBoot
+cover: https://blog.image.codedemo.vip/SpringBoot%2FSpringBoot.png
 ---
 
 SpringBootSecurity 自动登录、自动鉴权

@@ -1,6 +1,7 @@
 ---
 title: Ubuntu22.04 安装 JDK
 date: 2022-05-21 22:40:23
+cover: https://blog.image.codedemo.vip/Ubuntu22.04%2Fce9580e478bb294a04469b4eb7caddd7.jpeg
 tags:
 	- Ubuntu22.04
 ---
