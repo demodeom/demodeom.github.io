@@ -9,21 +9,30 @@ SpringBootSecurity 自动登录、自动鉴权
 <!-- more -->
 
 
-## 依赖
+## 快速体验
 
-```
+- 创建项目
+- 自定义路由，比如： `/`
+- 添加依赖
+- 体验登录验证
+
+### 自定义路由
+
+### 依赖
+
+```xml
 <dependency>
-<groupId>org.springframework.boot</groupId>
-<artifactId>spring-boot-starter-security</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
 </dependency>
 ```
 
-## 初次体验
+### 初次体验
 
 默认路由
 
-- `/login`
-- `/logout`
+- `/login` 登录
+- `/logout` 退出登录
 
 默认账号
 
@@ -34,7 +43,29 @@ SpringBootSecurity 自动登录、自动鉴权
 Using generated security password: 2effbc5f-ca7c-4417-b4d0-b303c6984d8b
 ```
 
-## 接入登录
+## 自定义用户
+
+### 准备
+
+添加 JPA 依赖
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+
+添加 MySQL 依赖
+
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+
 
 
 ### 自定义 User
