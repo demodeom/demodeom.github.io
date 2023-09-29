@@ -6,5 +6,5 @@ set -e
 git add .
 git commit -m "update"
 git pull
-git push
+git push git@github.com:demodeom/demodeom.github.io.git main:main
 
