@@ -10,24 +10,36 @@ categories:
 
 ### Linux
 
-GitHub 下载地址 [https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip](https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip)
+GitHub 下载地址 
 
-美国 Cloudflare CDN 加速下载地址 [https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip](https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip)
+[https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip](https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip)
+
+美国 Cloudflare CDN 加速下载地址 
+
+[https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip](https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_linux-x64.zip)
 
 
 ### Win
 
 
-GitHub 下载地址  [https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip](https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip)
+GitHub 下载地址  
 
-美国 Cloudflare CDN 加速下载地址 [https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip](https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip)
+[https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip](https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip)
+
+美国 Cloudflare CDN 加速下载地址 
+
+[https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip](https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip)
 
 
 ### Mac
 
-GitHub 下载地址  [https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip](https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip)
+GitHub 下载地址  
 
-美国 Cloudflare CDN 加速下载地址 [https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip](https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip)
+[https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip](https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip)
+
+美国 Cloudflare CDN 加速下载地址 
+
+[https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip](https://download.nuaa.cf/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_osx-x64.zip)
 
 
 ## 运行
