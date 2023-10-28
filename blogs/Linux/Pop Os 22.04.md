@@ -329,3 +329,14 @@ https://github.com/shiftkey/desktop
 https://github.com/shiftkey/desktop/releases/download/release-3.3.1-linux1/GitHubDesktop-linux-amd64-3.3.1-linux1.deb
 ```
 
+## AppImageLauncher 
+
+
+```bash
+https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb
+```
+
+
+
+
+
