@@ -102,6 +102,6 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo： "git@github.com:demodeom/demodeom.github.io.git"
+  repo: "git@github.com:demodeom/demodeom.github.io.git"
   branch: "gh-pages"
   message: "Update Article"
