@@ -1,5 +1,12 @@
 # 说明文档
 
+## Hexo
+
+
+```bash
+npm install hexo-cli -g
+```
+
 ## 主题
 
 [ fluid-dev /hexo-theme-fluid](https://github.com/fluid-dev/hexo-theme-fluid)
