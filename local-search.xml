@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>Fedora40安装VirtualBox</title>
+    <link href="/2024/09/09/Fedora40%E5%AE%89%E8%A3%85VirtualBox/"/>
+    <url>/2024/09/09/Fedora40%E5%AE%89%E8%A3%85VirtualBox/</url>
+    
+    <content type="html"><![CDATA[<p>为什么安装 VirtualBox ？ 因为 VMware Workstation Pro 太难安装了，需要解决各种错误。</p><span id="more"></span><h2 id="安装-kernel-devel"><a href="#安装-kernel-devel" class="headerlink" title="安装 kernel-devel"></a>安装 kernel-devel</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install kernel-devel -y<br></code></pre></td></tr></table></figure><h2 id="下载-rpm-安装包"><a href="#下载-rpm-安装包" class="headerlink" title="下载 rpm 安装包"></a>下载 rpm 安装包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br></code></pre></td></tr></table></figure><h2 id="安装-rpm-安装包"><a href="#安装-rpm-安装包" class="headerlink" title="安装 rpm 安装包"></a>安装 rpm 安装包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install VirtualBox-7.0-7.0.20_163906_fedora40-1.x86_64.rpm<br></code></pre></td></tr></table></figure><h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><h4 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">Failed <span class="hljs-keyword">to</span> enumerate host USB devices.<br>VirtualBox <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> currently allowed <span class="hljs-keyword">to</span> <span class="hljs-keyword">access</span> USB devices. You can change this <span class="hljs-keyword">by</span> adding your <span class="hljs-keyword">user</span> <span class="hljs-keyword">to</span> the <span class="hljs-string">&#x27;vboxusers&#x27;</span> <span class="hljs-keyword">group</span>. Please see the <span class="hljs-keyword">user</span> manual <span class="hljs-keyword">for</span> a more detailed explanation.<br></code></pre></td></tr></table></figure><p>解决方法</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> usermod -aG vboxusers <span class="hljs-variable">$USER</span><br></code></pre></td></tr></table></figure><p>需要重启系统</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Fedora40美化</title>
+    <link href="/2024/09/09/Fedora40%E7%BE%8E%E5%8C%96/"/>
+    <url>/2024/09/09/Fedora40%E7%BE%8E%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<p>Fedora40美化</p><span id="more"></span><p>参考文章 <a href="https://panp.cc/posts/gnome-style/">Gnome简单美化指北</a></p><p>Vimix-icon-theme <a href="https://www.pling.com/p/1273372">https://www.pling.com/p/1273372</a></p><p>Vimix-Gtk-Theme <a href="https://www.pling.com/p/1013698/">https://www.pling.com/p/1013698/</a></p><p>wallpapers <a href="https://github.com/vinceliuice/vimix-gtk-themes/tree/master/wallpapers">https://github.com/vinceliuice/vimix-gtk-themes/tree/master/wallpapers</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2024/09/09/hello-world/"/>
     <url>/2024/09/09/hello-world/</url>
