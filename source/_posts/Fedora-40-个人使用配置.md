@@ -1,5 +1,5 @@
 ---
-title: Fodora 40 个人使用配置
+title: Fedora40个人使用配置
 date: 2024-09-03 06:09:49
 tags:
 ---
@@ -78,14 +78,6 @@ PING raw.githubusercontent.com (2606:50c0:8003::154) 56 字节的数据
 rtt min/avg/max/mdev = 143.506/151.331/165.299/9.900 ms
 ```
 
-### 系统更新
-
-系统镜像可能不是最新版，第一次安装完系统后，建议进行更新，
-
-```bash
-sudo dnf update
-```
-
 ### 必备软件
 
 ```bash
@@ -100,8 +92,6 @@ oh my zsh 是一款不错的插件
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-
-
 ## 软件管理
 
 ### Flatpak
@@ -113,11 +103,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ```
 
-
-
 ### AppImage Launcher
-
-
 
 ```bash
 ## 下载 AppImageLauncher
@@ -126,8 +112,6 @@ wget https://mirror.ghproxy.com/https://github.com/TheAssassin/AppImageLauncher/
 #安装 AppImageLauncher
 sudo dnf install ./appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 ```
-
-
 
 ### Docker
 
@@ -140,13 +124,32 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+假如安装失败，尝试修改文件 **/etc/yum.repos.d/docker-ce.repo** 文件，将 **docker-ce-test** 下方的 **enabled=0** 修改为 **enabled=1**
+
+参考文章 [Linux安装docker，报错Error downloading packages: 3:docker-ce-23.0.4-1.el7.x86_64:](https://blog.csdn.net/kkk990101/article/details/130240982)
+
 ### WebAppManager
-
-
 
 ```bash
 flatpak install flathub net.codelogistics.webapps
 ```
+
+## Gnome 工具
+
+### gnome-tweaks
+
+```bash
+sudo dnf install gnome-tweaks
+```
+
+
+### ExtensionManager
+
+```bash
+flatpak install flathub com.mattjakeman.ExtensionManager
+```
+
+
 
 
 
@@ -173,7 +176,7 @@ sudo dnf install clash-verge-1.7.7-1.x86_64.rpm
 
 推荐代理服务商
 
-​	- 三毛导航 [https://三毛导航.com/](https://三毛导航.com/) ， 很便宜， 所以叫做 三毛
+- 三毛导航 [https://三毛导航.com/](https://三毛导航.com/) ， 很便宜， 所以叫做 三毛
 
 ## 文本、代码编辑器
 
@@ -198,6 +201,48 @@ flatpak install flathub com.visualstudio.code
 ```bash
 flatpak install flathub io.typora.Typora
 ```
+
+
+
+### JetBrain
+
+[JetBrains Toolbox](https://www.jetbrains.com/zh-cn/lp/toolbox/)
+
+https://3.jetbra.in/
+
+idea
+
+```bash
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea64.vmoptions
+```
+
+pycharm
+
+```bash
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/pycharm-professional/bin/pycharm64.vmoptions
+```
+
+clion
+
+```bash
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/clion/bin/clion64.vmoptions
+```
+
+phpstorm
+
+```bash
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm64.vmoptions
+```
+
+webstorm
+
+```bash
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/webstorm/bin/webstorm64.vmoptions
+```
+
+
+
+
 
 ## 输入法 Fcitx5
 
@@ -226,6 +271,45 @@ SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
 ```
 
-使用 **扩展管理** 程序安装扩展  **Input Method Panel** 优化输入法
+使用 **ExtensionManager** 程序安装扩展  **Input Method Panel** 优化输入法
 
 重启系统生效
+
+## 浏览器
+
+### Google Chrome﻿
+
+```bash
+flatpak install flathub com.google.Chrome
+```
+
+
+
+### FireFox﻿
+
+```bash
+flatpak install flathub org.mozilla.firefox
+```
+
+
+
+FireFox 常用扩展
+
+- [腾讯翻译](https://addons.mozilla.org/zh-CN/firefox/addon/腾讯翻译/)
+- [GNOME Shell integration](https://addons.mozilla.org/zh-CN/firefox/addon/gnome-shell-integration/)
+- [LastPass Password Manager](https://addons.mozilla.org/zh-CN/firefox/addon/lastpass-password-manager/)
+- [Tampermonkey](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/)
+
+Tampermonkey 常用脚本
+
+- [Github 增强 - 高速下载](https://greasyfork.org/zh-CN/scripts/412245-github-增强-高速下载)
+- [CSDN广告完全过滤](https://greasyfork.org/zh-CN/scripts/378351-csdngreener-csdn广告完全过滤-免登录-个性化排版-最强老牌脚本-持续更新)
+
+### Brave﻿
+
+> 最近在 Google Chrome 使用过程中， 经常卡顿， 故安装 Brave 备用
+
+```bash
+flatpak install flathub com.brave.Browser
+```
+
