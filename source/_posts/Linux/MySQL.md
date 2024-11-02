@@ -2,6 +2,7 @@
 title: MySQL
 date: 2024-10-20 19:34:16
 tags:
+	- Linux
 ---
 
 <!-- more -->

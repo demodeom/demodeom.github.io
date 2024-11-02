@@ -2,6 +2,7 @@
 title: Python
 date: 2024-10-20 17:47:17
 tags:
+	- Linux
 ---
 
 Python 是一种广泛使用的高级编程语言，以其简洁的语法和强大的功能而闻名。它支持多种编程范式，包括面向对象、函数式和命令式编程，非常适合初学者和专业开发者。Python 拥有丰富的标准库和第三方模块，广泛应用于数据分析、人工智能、Web 开发、自动化脚本等领域。由于其强大的社区支持和持续的更新，Python 已成为科学计算和机器学习等热门领域的首选语言，受到越来越多开发者的青睐。
@@ -42,6 +43,12 @@ source ~/.zshrc
 sudo apt update; sudo apt install build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev curl git \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+```
+
+**Fedora 22 and above:**
+
+```
+sudo dnf install make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2
 ```
 
 

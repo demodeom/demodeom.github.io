@@ -1,9 +1,8 @@
 ---
-title: "[Pop!_OS] Flatpak"
+title: "Flatpak"
 date: 2024-10-20 16:57:44
 tags:
-categories:
-	- "Pop!_OS"
+	- Linux
 sticky: 800
 ---
 
@@ -11,12 +10,15 @@ Flatpak 是一个现代化的软件包管理系统，旨在简化 Linux 应用�
 
 <!-- more -->
 
+## APT
 
 安装 Flatpak
 
 ```bash
 sudo apt install flatpak -y
 ```
+
+## 镜像
 
 Flatpak 配置 上海交通大学 镜像 https://mirrors.sjtug.sjtu.edu.cn/docs/flathub
 

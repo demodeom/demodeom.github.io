@@ -2,8 +2,8 @@
 title: "[Pop!_OS] Gnome优化、美化"
 date: 2024-10-20 16:47:53
 tags:
-categories:
-	- "Pop!_OS"
+	- Linux
+	- Gnome
 sticky: 700
 ---
 
@@ -11,6 +11,9 @@ sticky: 700
 
 <!-- more -->
 
+## Gnome Tweaks 
+
+### APT
 
 安装 Gnome Tweaks 
 
@@ -18,20 +21,24 @@ sticky: 700
 sudo apt install gnome-tweaks -y
 ```
 
+### DNF
+
+```bash
+sudo dnf install gnome-tweaks -y
+```
+
+## Gnome Extension Manager
+
 Gnome Extension Manager
 
 ```bash
-sudo apt install gnome-shell-extension-manager -y
+flatpak install flathub com.mattjakeman.ExtensionManager
 ```
-
-
 
 推荐安装扩展
 
 - Dash To Panel
-
 - User Themes
-
 - Input Method Panel
-
 - AppIndicator and KStatusNotifierItem Support
+- Blur my Shell 

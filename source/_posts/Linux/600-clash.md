@@ -1,9 +1,8 @@
 ---
-title: "[Pop!_OS] clash"
+title: "clash"
 date: 2024-10-20 16:38:47
 tags:
-categories:
-	- "Pop!_OS"
+	- Linux
 sticky: 600
 ---
 
@@ -14,15 +13,25 @@ sticky: 600
 
 Clash GitHub 下载地址 [https://github.com/clash-verge-rev/clash-verge-rev/releases](https://github.com/clash-verge-rev/clash-verge-rev/releases)
 
-下载 clash
+## APT
 
 ```bash
-wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.7.7/clash-verge_1.7.7_amd64.deb
+# 下载 clash
+wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge-2.0.0-rc.5-1.x86_64.rpm
+
+#安装 clash
+sudo dpkg -i Clash.Verge-2.0.0-rc.5-1.x86_64.rpm
 ```
 
-安装 clash
+
+## DNF
+
 
 ```bash
+# 下载 clash
+wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.7.7/clash-verge_1.7.7_amd64.deb
+
+#安装 clash
 sudo dpkg -i clash-verge_1.7.7_amd64.deb
 ```
 

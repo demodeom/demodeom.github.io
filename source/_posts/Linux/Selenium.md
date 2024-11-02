@@ -2,7 +2,10 @@
 title: Selenium
 date: 2024-10-20 19:01:20
 tags:
+	- Linux
 ---
+
+Selenium 是一种用于自动化网页浏览的开源工具。它支持多种浏览器（如Chrome、Firefox）和编程语言（如Java、Python）。Selenium 主要用于测试Web应用程序，通过模拟用户操作（如点击、输入文本）来验证功能是否正常。它包括Selenium WebDriver、Selenium Grid等组件，帮助开发人员编写和执行自动化测试脚本，提高测试效率和覆盖率。
 
 <!-- more -->
 

@@ -2,6 +2,7 @@
 title: Java
 date: 2024-10-20 17:59:58
 tags:
+	- Linux
 ---
 
 

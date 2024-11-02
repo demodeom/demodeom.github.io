@@ -2,6 +2,7 @@
 title: Motrix
 date: 2024-10-20 17:22:22
 tags:
+	- Linux
 ---
 
 
