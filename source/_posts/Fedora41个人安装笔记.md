@@ -456,4 +456,10 @@ sudo rpm -i ~/Downloads/VirtualBox-7.1-7.1.4_165100_fedora40-1.x86_64.rpm
 sudo dnf install gtk2 kernel-devel
 ```
 
+可能需要将当前用户添加到 vboxusers 分组
+
+```
+sudo usermod -aG vboxusers $USER
+```
+
 
