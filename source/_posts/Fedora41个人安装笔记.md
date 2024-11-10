@@ -221,7 +221,7 @@ flatpak install flathub net.waterfox.waterfox
 
 ### Blink 内核
 
-Chrome
+Chrome [https://www.google.cn/intl/zh-CN/chrome/](https://www.google.cn/intl/zh-CN/chrome/)
 
 ```
 flatpak install flathub com.google.Chrome
@@ -249,7 +249,7 @@ flatpak install flathub com.opera.Opera
 
 使用 **软件商店** 、Flatpak、DNF 等工具安装的 Firefox 浏览器， 可能会存在某些问题， 建议使用 Firefox 提供的二进制文件进行安装
 
-下载地址
+下载地址 [https://www.firefox.com.cn/download/#product-desktop-release](https://www.firefox.com.cn/download/#product-desktop-release)
 
 ```
 https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US
@@ -423,4 +423,37 @@ pyenv global 3.10.14
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip config set install.trusted-host pypi.tuna.tsinghua.edu.cn
 ```
+
+## IDEA
+
+```
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea64.vmoptions
+
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/pycharm-professional/bin/pycharm64.vmoptions
+
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/clion/bin/clion64.vmoptions
+
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm64.vmoptions
+
+echo -e "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains" >> ~/.local/share/JetBrains/Toolbox/apps/webstorm/bin/webstorm64.vmoptions
+```
+
+## 虚拟机
+
+### Virtual Box
+
+
+下载地址 [https://www.virtualbox.org/wiki/Linux_Downloads](https://www.virtualbox.org/wiki/Linux_Downloads)
+
+
+```bash
+sudo rpm -i ~/Downloads/VirtualBox-7.1-7.1.4_165100_fedora40-1.x86_64.rpm
+```
+
+可能需要以下依赖
+
+```bash
+sudo dnf install gtk2 kernel-devel
+```
+
 
