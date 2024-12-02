@@ -1,5 +1,5 @@
 ---
-title: Node.js
+title: Linux 开发环境搭建-Node.js
 date: 2024-10-20 17:37:07
 tags:
 	- Linux

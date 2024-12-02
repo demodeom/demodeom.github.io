@@ -1,9 +1,9 @@
 ---
-title: Color Picker-取色工具
+title: Linux 取色工具-Color Picker
 date: 2024-10-20 19:04:49
 tags:
 	- Linux
-	- Web
+	- 取色
 ---
 
 <!-- more -->

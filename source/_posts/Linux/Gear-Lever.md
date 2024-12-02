@@ -1,5 +1,5 @@
 ---
-title: Gear Lever
+title: Linux 软件管理-AppImage
 date: 2024-10-20 17:13:40
 tags:
 	- Linux

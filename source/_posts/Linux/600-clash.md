@@ -1,8 +1,9 @@
 ---
-title: "clash"
+title: Linux 代理工具-clash
 date: 2024-10-20 16:38:47
 tags:
 	- Linux
+	- 代理
 sticky: 600
 ---
 
@@ -13,19 +14,14 @@ sticky: 600
 
 Clash GitHub 下载地址 [https://github.com/clash-verge-rev/clash-verge-rev/releases](https://github.com/clash-verge-rev/clash-verge-rev/releases)
 
-## APT
 
-```bash
-# 下载 clash
-wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge-2.0.0-rc.5-1.x86_64.rpm
+## 三毛导航
 
-#安装 clash
-sudo dpkg -i Clash.Verge-2.0.0-rc.5-1.x86_64.rpm
-```
+三毛导航 [https://三毛导航.com](https://三毛导航.com)
 
+## Ubuntu
 
-## DNF
-
+仓库提供了 deb 格式的安装包， 可以直接下载安装
 
 ```bash
 # 下载 clash
@@ -36,6 +32,28 @@ sudo dpkg -i clash-verge_1.7.7_amd64.deb
 ```
 
 
-三毛导航 [https://三毛导航.com](https://三毛导航.com)
+## DNF
 
+仓库提供了 rpm 格式的安装包， 可以直接下载安装
+
+```bash
+
+# 下载 clash
+wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge-2.0.0-rc.5-1.x86_64.rpm
+
+#安装 clash
+sudo dpkg -i Clash.Verge-2.0.0-rc.5-1.x86_64.rpm
+```
+
+
+## Manjaro
+
+aur 仓库提供了软件安装脚本
+
+```bash
+git clone https://aur.archlinux.org/clash-verge-rev-bin.git
+cd qdirstat
+cd clash-verge-rev-bin
+makepkg -is
+```
 

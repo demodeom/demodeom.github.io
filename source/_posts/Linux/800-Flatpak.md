@@ -1,5 +1,5 @@
 ---
-title: "Flatpak"
+title: Linux 软件管理-Flatpak
 date: 2024-10-20 16:57:44
 tags:
 	- Linux
@@ -27,5 +27,10 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ```
 
-- 官方仓库 https://flathub.org/repo/flathub
+- 官方仓库 https://dl.flathub.org/repo/flathub.flatpakrepo
 - 上交大镜像 https://mirror.sjtu.edu.cn/flathub
+
+
+```
+flatpak remote-modify flathub --url=https://dl.flathub.org/repo/flathub.flatpakrepo
+```
