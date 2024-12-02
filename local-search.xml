@@ -4,17 +4,42 @@
   
   
   <entry>
-    <title>Linux 常用软件</title>
-    <link href="/2024/11/30/Linux/Linux-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
-    <url>/2024/11/30/Linux/Linux-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</url>
+    <title>Linux 软件管理</title>
+    <link href="/2024/11/30/Linux/Linux-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86/"/>
+    <url>/2024/11/30/Linux/Linux-%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86/</url>
     
-    <content type="html"><![CDATA[<span id="more"></span><h2 id="Manjaro"><a href="#Manjaro" class="headerlink" title="Manjaro"></a>Manjaro</h2><h3 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy vim zsh wget git curl<br></code></pre></td></tr></table></figure><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="终端美化"><a href="#终端美化" class="headerlink" title="终端美化"></a>终端美化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置默认分支名</span><br>git config --global init.defaultBranch main<br><br><span class="hljs-comment"># 配置用户名</span><br>git config --global user.name <span class="hljs-string">&quot;demo&quot;</span><br><br><span class="hljs-comment"># 配置用户邮箱</span><br>git config --global user.email <span class="hljs-string">&quot;demodeom@example.com&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="AppImage"><a href="#AppImage" class="headerlink" title="AppImage"></a>AppImage</h2><p>Gear Lever是一个可以轻松管理 AppImage 的工具！Gear Lever 将为你组织和管理 AppImage 文件，生成桌面快捷方式、更新应用程序或保留多个版本并存。</p><h2 id="GearLever"><a href="#GearLever" class="headerlink" title="GearLever"></a>GearLever</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub it.mijorus.gearlever<br></code></pre></td></tr></table></figure><h2 id="Flatpak-镜像"><a href="#Flatpak-镜像" class="headerlink" title="Flatpak 镜像"></a>Flatpak 镜像</h2><p>镜像</p><p>配置 [上海交通大学 Flatpak 镜像](<a href="https://mirrors.sjtug.sjtu.edu.cn/docs/flathub">上海交通大学 Linux 用户组 软件源镜像服务</a>)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo<br>flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub<br></code></pre></td></tr></table></figure><ul><li><p>官方仓库 <a href="https://flathub.org/repo/flathub">https://flathub.org/repo/flathub</a></p></li><li><p>上交大镜像 <a href="https://mirror.sjtu.edu.cn/flathub">https://mirror.sjtu.edu.cn/flathub</a></p></li></ul>]]></content>
     
     
     
     <tags>
       
       <tag>Linux</tag>
+      
+      <tag>AppImage</tag>
+      
+      <tag>Flatpak</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux 常用软件</title>
+    <link href="/2024/11/30/Linux/Linux-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    <url>/2024/11/30/Linux/Linux-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><h2 id="Manjaro"><a href="#Manjaro" class="headerlink" title="Manjaro"></a>Manjaro</h2><h3 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy vim zsh wget git curl<br></code></pre></td></tr></table></figure><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="终端美化"><a href="#终端美化" class="headerlink" title="终端美化"></a>终端美化</h3><p>提升您的命令行体验，尽在 Oh My Zsh！作为最受欢迎的 Zsh 配置框架，Oh My Zsh 让您的终端界面焕然一新。丰富的主题和插件支持，让您轻松自定义环境，提升工作效率。无论是代码开发、系统管理还是日常任务，Oh My Zsh 都能让您的命令行操作更加智能化和便捷。加入数万用户的行列，立即体验 Oh My Zsh 带来的终端革命，让您的工作更高效、更愉悦！</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置默认分支名</span><br>git config --global init.defaultBranch main<br><br><span class="hljs-comment"># 配置用户名</span><br>git config --global user.name <span class="hljs-string">&quot;demo&quot;</span><br><br><span class="hljs-comment"># 配置用户邮箱</span><br>git config --global user.email <span class="hljs-string">&quot;demodeom@example.com&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>常用软件</tag>
       
     </tags>
     
@@ -27,7 +52,7 @@
     <link href="/2024/11/30/Linux/Linux-%E5%AE%89%E8%A3%85-Fcitx5/"/>
     <url>/2024/11/30/Linux/Linux-%E5%AE%89%E8%A3%85-Fcitx5/</url>
     
-    <content type="html"><![CDATA[<p>Linux 安装 Fcitx5</p><span id="more"></span><h2 id="Manjaro24"><a href="#Manjaro24" class="headerlink" title="Manjaro24"></a>Manjaro24</h2><h3 id="安装-Fcitx5"><a href="#安装-Fcitx5" class="headerlink" title="安装 Fcitx5"></a>安装 Fcitx5</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy fictx5 fcitx5-chinese-addons fcitx5-configtool<br></code></pre></td></tr></table></figure><h3 id="配置-Fcitx5"><a href="#配置-Fcitx5" class="headerlink" title="配置 Fcitx5"></a>配置 Fcitx5</h3><p>使用软件 <strong>Tweaks</strong> ， 将 Fcitx5 添加到开机自启动软件列表</p><p>启动 Fcitx5 输入法</p><p>启动 Fcitx5 Configuration ,将 <strong>Pinyin</strong> 输入法添加到默认分组</p><p>创建环境变量文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/profile.d/my-fcitx5.sh<br></code></pre></td></tr></table></figure><p>环境变量文件内容如下</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">GTK_IM_MODULE</span>=fcitx<br><span class="hljs-attr">QT_IM_MODULE</span>=fcitx<br><span class="hljs-attr">XMODIFIERS</span>=@im=fcitx<br><span class="hljs-attr">INPUT_METHOD</span>=fcitx<br><span class="hljs-attr">SDL_IM_MODULE</span>=fcitx<br><span class="hljs-attr">GLFW_IM_MODULE</span>=ibus<br></code></pre></td></tr></table></figure><p>重启系统生效</p><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>安装 Gnome 扩展 <a href="https://extensions.gnome.org/extension/261/kimpanel/">Input Method Panel - GNOME Shell Extensions</a>优化输入法外观</p><p>下载 词库 <a href="https://github.com/wuhgit/CustomPinyinDictionary">自建拼音输入法词库，百万常用词汇量</a>， 优化输入效果</p>]]></content>
+    <content type="html"><![CDATA[<p>释放您的输入潜力，尽在 Fcitx5！作为 Linux 用户的必备输入法框架，Fcitx5 提供多种语言支持与灵活定制，让每一次输入都流畅无阻。无论是拼音、五笔还是其他输入法，Fcitx5 都能完美满足您的需求。现代化的界面和强大的插件生态，让您的工作与娱乐更高效。选择 Fcitx5，体验无与伦比的输入乐趣，提升您的数字生活品质！立即下载，开启高效输入新体验！</p><span id="more"></span><h2 id="Manjaro24"><a href="#Manjaro24" class="headerlink" title="Manjaro24"></a>Manjaro24</h2><h3 id="安装-Fcitx5"><a href="#安装-Fcitx5" class="headerlink" title="安装 Fcitx5"></a>安装 Fcitx5</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy fictx5 fcitx5-chinese-addons fcitx5-configtool<br></code></pre></td></tr></table></figure><h3 id="配置-Fcitx5"><a href="#配置-Fcitx5" class="headerlink" title="配置 Fcitx5"></a>配置 Fcitx5</h3><p>使用软件 <strong>Tweaks</strong> ， 将 Fcitx5 添加到开机自启动软件列表</p><p>启动 Fcitx5 输入法</p><p>启动 Fcitx5 Configuration ,将 <strong>Pinyin</strong> 输入法添加到默认分组</p><p>创建环境变量文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/profile.d/my-fcitx5.sh<br></code></pre></td></tr></table></figure><p>环境变量文件内容如下</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">GTK_IM_MODULE</span>=fcitx<br><span class="hljs-attr">QT_IM_MODULE</span>=fcitx<br><span class="hljs-attr">XMODIFIERS</span>=@im=fcitx<br><span class="hljs-attr">INPUT_METHOD</span>=fcitx<br><span class="hljs-attr">SDL_IM_MODULE</span>=fcitx<br><span class="hljs-attr">GLFW_IM_MODULE</span>=ibus<br></code></pre></td></tr></table></figure><p>重启系统生效</p><h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>适用于 <strong>Ubuntu 2204</strong> 、<strong>Ubuntu 2404</strong>、<strong>Pop!_OS 2204</strong>、<strong>Zorin OS 17</strong> 等</p><ol><li>安装输入法</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fcitx5 fcitx5-module-cloudpinyin fcitx5-chinese-addons -y<br></code></pre></td></tr></table></figure><ol start="2"><li>使用 <strong>Startup Applications</strong> 将 <strong>fcitx5</strong> 添加到开机自启动</li><li>使用命令 <strong>fcitx5</strong> 启动输入法</li><li>使用命令  <strong>fcitx5-config-qt</strong> 启动fcitx5配置， 将 <strong>Pinyin</strong> 添加到输入法分组</li><li>重启系统生效</li></ol><h2 id="Fedora"><a href="#Fedora" class="headerlink" title="Fedora"></a>Fedora</h2><p>适用于 <strong>Fedora 40</strong> 等</p><ol><li>安装输入法</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install fcitx5  fcitx5-chinese-addons fcitx5-configtool -y<br></code></pre></td></tr></table></figure><ol start="2"><li>使用 <strong>Gnome Tweaks</strong> 将 <strong>fcitx5</strong> 添加到开机自启动</li><li>使用命令 <strong>fcitx5</strong> 启动输入法</li><li>使用命令  <strong>fcitx5-config-qt</strong> 启动fcitx5配置， 将 <strong>Pinyin</strong> 添加到输入法分组</li><li>重启系统生效</li></ol><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>安装 Gnome 扩展 <strong>Input Method Panel</strong> 优化输入法主题</p><h2 id="优化-1"><a href="#优化-1" class="headerlink" title="优化"></a>优化</h2><p>安装 Gnome 扩展 <a href="https://extensions.gnome.org/extension/261/kimpanel/">Input Method Panel - GNOME Shell Extensions</a>优化输入法外观</p><p>下载 词库 <a href="https://github.com/wuhgit/CustomPinyinDictionary">自建拼音输入法词库，百万常用词汇量</a>， 优化输入效果</p><p>词库下载地址 <a href="https://maicss.lanzoui.com/iErOirt790h">https://maicss.lanzoui.com/iErOirt790h</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p  ~/.local/share/fcitx5/pinyin/dictionaries/<br><span class="hljs-built_in">cp</span> zhwiki-20210722.dict ~/.local/share/fcitx5/pinyin/dictionaries/<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -155,17 +180,19 @@
   
   
   <entry>
-    <title>Flameshot</title>
+    <title>Linux 截图工具-Flameshot</title>
     <link href="/2024/10/20/Linux/Flameshot/"/>
     <url>/2024/10/20/Linux/Flameshot/</url>
     
-    <content type="html"><![CDATA[<p>Flameshot 是一个功能强大的开源截图工具，专为 Linux 用户设计。它提供直观的界面和多种截图编辑功能，如注释、模糊处理和高亮显示。用户可以自定义快捷键、调整界面风格，并通过命令行进行自动化操作。Flameshot 支持多种图像格式，适合开发者、设计师和普通用户使用。</p><span id="more"></span><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">flatpak <span class="hljs-keyword">install</span> flathub org.flameshot.Flameshot<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>Flameshot 是一个功能强大的开源截图工具，专为 Linux 用户设计。它提供直观的界面和多种截图编辑功能，如注释、模糊处理和高亮显示。用户可以自定义快捷键、调整界面风格，并通过命令行进行自动化操作。Flameshot 支持多种图像格式，适合开发者、设计师和普通用户使用。</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub org.flameshot.Flameshot<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
     <tags>
       
       <tag>Linux</tag>
+      
+      <tag>截图</tag>
       
     </tags>
     
@@ -174,7 +201,7 @@
   
   
   <entry>
-    <title>Color Picker-取色工具</title>
+    <title>Linux 取色工具-Color Picker</title>
     <link href="/2024/10/20/Linux/ColorPicker/"/>
     <url>/2024/10/20/Linux/ColorPicker/</url>
     
@@ -186,7 +213,7 @@
       
       <tag>Linux</tag>
       
-      <tag>Web</tag>
+      <tag>取色</tag>
       
     </tags>
     
@@ -214,7 +241,7 @@
   
   
   <entry>
-    <title>LocalSend</title>
+    <title>Linux 局域网文件传输</title>
     <link href="/2024/10/20/Linux/LocalSend/"/>
     <url>/2024/10/20/Linux/LocalSend/</url>
     
@@ -225,6 +252,12 @@
     <tags>
       
       <tag>Linux</tag>
+      
+      <tag>局域网</tag>
+      
+      <tag>文件传输</tag>
+      
+      <tag>LocalSend</tag>
       
     </tags>
     
@@ -290,7 +323,7 @@
   
   
   <entry>
-    <title>Node.js</title>
+    <title>Linux 开发环境搭建-Node.js</title>
     <link href="/2024/10/20/Linux/nvm/"/>
     <url>/2024/10/20/Linux/nvm/</url>
     
@@ -444,7 +477,7 @@
   
   
   <entry>
-    <title>Navicat Premium</title>
+    <title>Linux 数据库管理-Navicat Premium</title>
     <link href="/2024/10/20/Linux/Navicat-Premium/"/>
     <url>/2024/10/20/Linux/Navicat-Premium/</url>
     
@@ -456,6 +489,8 @@
       
       <tag>Linux</tag>
       
+      <tag>MySQL</tag>
+      
     </tags>
     
   </entry>
@@ -463,7 +498,7 @@
   
   
   <entry>
-    <title>Gear Lever</title>
+    <title>Linux 软件管理-AppImage</title>
     <link href="/2024/10/20/Linux/Gear-Lever/"/>
     <url>/2024/10/20/Linux/Gear-Lever/</url>
     
@@ -503,11 +538,11 @@
   
   
   <entry>
-    <title>Flatpak</title>
+    <title>Linux 软件管理-Flatpak</title>
     <link href="/2024/10/20/Linux/800-Flatpak/"/>
     <url>/2024/10/20/Linux/800-Flatpak/</url>
     
-    <content type="html"><![CDATA[<p>Flatpak 是一个现代化的软件包管理系统，旨在简化 Linux 应用程序的分发和安装。无论你使用哪个发行版，Flatpak 都能为你提供一致的应用体验，使软件安装变得更加便捷。</p><span id="more"></span><h2 id="APT"><a href="#APT" class="headerlink" title="APT"></a>APT</h2><p>安装 Flatpak</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install flatpak -y<br></code></pre></td></tr></table></figure><h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><p>Flatpak 配置 上海交通大学 镜像 <a href="https://mirrors.sjtug.sjtu.edu.cn/docs/flathub">https://mirrors.sjtug.sjtu.edu.cn/docs/flathub</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo<br>flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub<br></code></pre></td></tr></table></figure><ul><li>官方仓库 <a href="https://flathub.org/repo/flathub">https://flathub.org/repo/flathub</a></li><li>上交大镜像 <a href="https://mirror.sjtu.edu.cn/flathub">https://mirror.sjtu.edu.cn/flathub</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>Flatpak 是一个现代化的软件包管理系统，旨在简化 Linux 应用程序的分发和安装。无论你使用哪个发行版，Flatpak 都能为你提供一致的应用体验，使软件安装变得更加便捷。</p><span id="more"></span><h2 id="APT"><a href="#APT" class="headerlink" title="APT"></a>APT</h2><p>安装 Flatpak</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install flatpak -y<br></code></pre></td></tr></table></figure><h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><p>Flatpak 配置 上海交通大学 镜像 <a href="https://mirrors.sjtug.sjtu.edu.cn/docs/flathub">https://mirrors.sjtug.sjtu.edu.cn/docs/flathub</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo<br>flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub<br></code></pre></td></tr></table></figure><ul><li>官方仓库 <a href="https://dl.flathub.org/repo/flathub.flatpakrepo">https://dl.flathub.org/repo/flathub.flatpakrepo</a></li><li>上交大镜像 <a href="https://mirror.sjtu.edu.cn/flathub">https://mirror.sjtu.edu.cn/flathub</a></li></ul><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">flatpak remote-modify flathub --url=https:<span class="hljs-regexp">//</span>dl.flathub.org<span class="hljs-regexp">/repo/</span>flathub.flatpakrepo<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -543,11 +578,11 @@
   
   
   <entry>
-    <title>clash</title>
+    <title>Linux 代理工具-clash</title>
     <link href="/2024/10/20/Linux/600-clash/"/>
     <url>/2024/10/20/Linux/600-clash/</url>
     
-    <content type="html"><![CDATA[<p>畅享无忧网络体验，尽在 Clash！作为强大的代理工具，Clash 为您提供快速、稳定的网络连接，让您轻松绕过地域限制，享受自由上网。无论是流媒体观看、游戏加速还是安全浏览，Clash 都能满足您的需求。其直观的界面和灵活的配置选项，让您轻松管理网络流量，提升在线体验。选择 Clash，让您的网络生活更畅快无阻，尽情探索互联网的无限可能！</p><span id="more"></span><p>Clash GitHub 下载地址 <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases">https://github.com/clash-verge-rev/clash-verge-rev/releases</a></p><h2 id="APT"><a href="#APT" class="headerlink" title="APT"></a>APT</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载 clash</span><br>wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge-2.0.0-rc.5-1.x86_64.rpm<br><br><span class="hljs-comment">#安装 clash</span><br><span class="hljs-built_in">sudo</span> dpkg -i Clash.Verge-2.0.0-rc.5-1.x86_64.rpm<br></code></pre></td></tr></table></figure><h2 id="DNF"><a href="#DNF" class="headerlink" title="DNF"></a>DNF</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载 clash</span><br>wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.7.7/clash-verge_1.7.7_amd64.deb<br><br><span class="hljs-comment">#安装 clash</span><br><span class="hljs-built_in">sudo</span> dpkg -i clash-verge_1.7.7_amd64.deb<br></code></pre></td></tr></table></figure><p>三毛导航 <a href="https://三毛导航.com/">https:&#x2F;&#x2F;三毛导航.com</a></p>]]></content>
+    <content type="html"><![CDATA[<p>畅享无忧网络体验，尽在 Clash！作为强大的代理工具，Clash 为您提供快速、稳定的网络连接，让您轻松绕过地域限制，享受自由上网。无论是流媒体观看、游戏加速还是安全浏览，Clash 都能满足您的需求。其直观的界面和灵活的配置选项，让您轻松管理网络流量，提升在线体验。选择 Clash，让您的网络生活更畅快无阻，尽情探索互联网的无限可能！</p><span id="more"></span><p>Clash GitHub 下载地址 <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases">https://github.com/clash-verge-rev/clash-verge-rev/releases</a></p><h2 id="三毛导航"><a href="#三毛导航" class="headerlink" title="三毛导航"></a>三毛导航</h2><p>三毛导航 <a href="https://三毛导航.com/">https:&#x2F;&#x2F;三毛导航.com</a></p><h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>仓库提供了 deb 格式的安装包， 可以直接下载安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载 clash</span><br>wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.7.7/clash-verge_1.7.7_amd64.deb<br><br><span class="hljs-comment">#安装 clash</span><br><span class="hljs-built_in">sudo</span> dpkg -i clash-verge_1.7.7_amd64.deb<br></code></pre></td></tr></table></figure><h2 id="DNF"><a href="#DNF" class="headerlink" title="DNF"></a>DNF</h2><p>仓库提供了 rpm 格式的安装包， 可以直接下载安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># 下载 clash</span><br>wget https://ghproxy.cn/https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/Clash.Verge-2.0.0-rc.5-1.x86_64.rpm<br><br><span class="hljs-comment">#安装 clash</span><br><span class="hljs-built_in">sudo</span> dpkg -i Clash.Verge-2.0.0-rc.5-1.x86_64.rpm<br></code></pre></td></tr></table></figure><h2 id="Manjaro"><a href="#Manjaro" class="headerlink" title="Manjaro"></a>Manjaro</h2><p>aur 仓库提供了软件安装脚本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/clash-verge-rev-bin.git<br><span class="hljs-built_in">cd</span> qdirstat<br><span class="hljs-built_in">cd</span> clash-verge-rev-bin<br>makepkg -is<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -555,24 +590,7 @@
       
       <tag>Linux</tag>
       
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>输入法Fcitx5</title>
-    <link href="/2024/10/20/Linux/500.%E8%BE%93%E5%85%A5%E6%B3%95Fcitx5/"/>
-    <url>/2024/10/20/Linux/500.%E8%BE%93%E5%85%A5%E6%B3%95Fcitx5/</url>
-    
-    <content type="html"><![CDATA[<p>释放您的输入潜力，尽在 Fcitx5！作为 Linux 用户的必备输入法框架，Fcitx5 提供多种语言支持与灵活定制，让每一次输入都流畅无阻。无论是拼音、五笔还是其他输入法，Fcitx5 都能完美满足您的需求。现代化的界面和强大的插件生态，让您的工作与娱乐更高效。选择 Fcitx5，体验无与伦比的输入乐趣，提升您的数字生活品质！立即下载，开启高效输入新体验！</p><span id="more"></span><h2 id="不同发行版"><a href="#不同发行版" class="headerlink" title="不同发行版"></a>不同发行版</h2><h3 id="APT"><a href="#APT" class="headerlink" title="APT"></a>APT</h3><p>适用于 <strong>Ubuntu 2204</strong> 、<strong>Ubuntu 2404</strong>、<strong>Pop!_OS 2204</strong>、<strong>Zorin OS 17</strong> 等</p><ol><li>安装输入法</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install fcitx5 fcitx5-module-cloudpinyin fcitx5-chinese-addons -y<br></code></pre></td></tr></table></figure><ol start="2"><li>使用 <strong>Startup Applications</strong> 将 <strong>fcitx5</strong> 添加到开机自启动</li><li>使用命令 <strong>fcitx5</strong> 启动输入法</li><li>使用命令  <strong>fcitx5-config-qt</strong> 启动fcitx5配置， 将 <strong>Pinyin</strong> 添加到输入法分组</li><li>重启系统生效</li></ol><h2 id="DNF"><a href="#DNF" class="headerlink" title="DNF"></a>DNF</h2><p>适用于 <strong>Fedora 40</strong> 等</p><ol><li>安装输入法</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install fcitx5  fcitx5-chinese-addons fcitx5-configtool -y<br></code></pre></td></tr></table></figure><ol start="2"><li>使用 <strong>Gnome Tweaks</strong> 将 <strong>fcitx5</strong> 添加到开机自启动</li><li>使用命令 <strong>fcitx5</strong> 启动输入法</li><li>使用命令  <strong>fcitx5-config-qt</strong> 启动fcitx5配置， 将 <strong>Pinyin</strong> 添加到输入法分组</li><li>重启系统生效</li></ol><h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>安装 Gnome 扩展 <strong>Input Method Panel</strong> 优化输入法主题</p><h3 id="词库配置"><a href="#词库配置" class="headerlink" title="词库配置"></a>词库配置</h3><p>词库下载地址 <a href="https://maicss.lanzoui.com/iErOirt790h">https://maicss.lanzoui.com/iErOirt790h</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p  ~/.local/share/fcitx5/pinyin/dictionaries/<br><span class="hljs-built_in">cp</span> zhwiki-20210722.dict ~/.local/share/fcitx5/pinyin/dictionaries/<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Linux</tag>
+      <tag>代理</tag>
       
     </tags>
     
@@ -619,11 +637,11 @@
   
   
   <entry>
-    <title>[Pop!_OS] 系统镜像</title>
+    <title>Linux 国内镜像</title>
     <link href="/2024/10/20/Linux/200.%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F/"/>
     <url>/2024/10/20/Linux/200.%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F/</url>
     
-    <content type="html"><![CDATA[<p>许多人都不知道，系统镜像仓库是开源软件的宝藏，提供丰富的软件包和更新，助力开发者和爱好者的梦想。无论是新手还是资深用户，选择稳定的镜像仓库，让下载速度更快、体验更流畅。让每一个项目都能快速启动，让每一次学习都充满乐趣，系统 镜像仓库，您理想的开源之旅从这里开始！</p><span id="more"></span><p>感谢 <strong>上海交通大学</strong> 提供的 <strong>Pop!_OS</strong> 镜像</p><p>使用以下命令配置镜像</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s@http://apt.pop-os.org/@https://mirror.sjtu.edu.cn/pop-os/@g&#x27;</span> /etc/apt/sources.list.d/pop-os-apps.sources<br><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s@http://apt.pop-os.org/@https://mirror.sjtu.edu.cn/pop-os/@g&#x27;</span> /etc/apt/sources.list.d/pop-os-release.sources<br><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s@http://apt.pop-os.org/@https://mirror.sjtu.edu.cn/@g&#x27;</span> /etc/apt/sources.list.d/system.sources<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>许多人都不知道，系统镜像仓库是开源软件的宝藏，提供丰富的软件包和更新，助力开发者和爱好者的梦想。无论是新手还是资深用户，选择稳定的镜像仓库，让下载速度更快、体验更流畅。让每一个项目都能快速启动，让每一次学习都充满乐趣，系统 镜像仓库，您理想的开源之旅从这里开始！</p><span id="more"></span><h2 id="Pop-OS"><a href="#Pop-OS" class="headerlink" title="Pop!_OS"></a><strong>Pop!_OS</strong></h2><p>感谢 <strong>上海交通大学</strong> 提供的 <strong>Pop!_OS</strong> 镜像</p><p>使用以下命令配置镜像</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s@http://apt.pop-os.org/@https://mirror.sjtu.edu.cn/pop-os/@g&#x27;</span> /etc/apt/sources.list.d/pop-os-apps.sources<br><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s@http://apt.pop-os.org/@https://mirror.sjtu.edu.cn/pop-os/@g&#x27;</span> /etc/apt/sources.list.d/pop-os-release.sources<br><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s@http://apt.pop-os.org/@https://mirror.sjtu.edu.cn/@g&#x27;</span> /etc/apt/sources.list.d/system.sources<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -638,7 +656,7 @@
   
   
   <entry>
-    <title>修改DNS</title>
+    <title>Linux 网络 - 修改DNS</title>
     <link href="/2024/10/20/Linux/100.%E4%BF%AE%E6%94%B9DNS/"/>
     <url>/2024/10/20/Linux/100.%E4%BF%AE%E6%94%B9DNS/</url>
     
@@ -649,6 +667,8 @@
     <tags>
       
       <tag>Linux</tag>
+      
+      <tag>DNS</tag>
       
     </tags>
     
