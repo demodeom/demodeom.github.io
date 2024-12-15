@@ -506,6 +506,12 @@ create user "demo"@"%" identified by "12345678";
 grant all on *.* to "demo"@"%" with grant option;
 ```
 
+退出数据库
+
+```sql
+exit;
+```
+
 退出 root 用户
 
 ```bash
