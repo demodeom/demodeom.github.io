@@ -628,3 +628,73 @@ wget https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.0.2
 sudo dpkg -i Clash.Verge_2.0.2_amd64.deb
 ```
 
+## Flutter
+
+
+```bash
+echo 'export PATH=$HOME/Documents/flutter/bin:$PATH' >> ~/.zshrc
+```
+
+检查 flutter 环境
+
+```
+flutter doctor
+```
+
+
+
+```
+[!] Android toolchain - develop for Android devices (Android SDK version 34.0.0)
+    ! Some Android licenses not accepted. To resolve this, run: flutter doctor
+      --android-licenses
+```
+
+
+
+```
+flutter doctor --android-licenses
+```
+
+
+
+```
+✗ clang++ is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install clang),
+      or can be downloaded from https://releases.llvm.org/
+```
+
+
+
+```
+✗ CMake is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install cmake),
+      or can be downloaded from https://cmake.org/download/
+```
+
+
+
+
+
+```
+✗ ninja is required for Linux development.
+      It is likely available from your distribution (e.g.: apt install
+      ninja-build), or can be downloaded from
+      https://github.com/ninja-build/ninja/releases
+```
+
+
+
+
+
+```
+✗ GTK 3.0 development libraries are required for Linux development.
+      They are likely available from your distribution (e.g.: apt install
+      libgtk-3-dev)
+```
+
+
+
+```bash
+sudo apt install -y clang cmake ninja-build  libgtk-3-dev
+```
+
