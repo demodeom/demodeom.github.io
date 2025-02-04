@@ -25,6 +25,38 @@ IP6
 2400:3200::1,2400:3200:baba::1
 ```
 
+使用以下命令测试
+
+```bash
+ping raw.githubusercontent.com -c3
+```
+
+修改前
+
+```.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.009 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.018 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.017 ms
+
+--- raw.githubusercontent.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2053ms
+rtt min/avg/max/mdev = 0.009/0.014/0.018/0.004 ms
+```
+
+修改后
+
+```
+PING raw.githubusercontent.com (185.199.109.133) 56(84) bytes of data.
+64 bytes from cdn-185-199-109-133.github.com (185.199.109.133): icmp_seq=1 ttl=128 time=120 ms
+64 bytes from cdn-185-199-109-133.github.com (185.199.109.133): icmp_seq=2 ttl=128 time=121 ms
+64 bytes from cdn-185-199-109-133.github.com (185.199.109.133): icmp_seq=3 ttl=128 time=121 ms
+
+--- raw.githubusercontent.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 120.394/120.504/120.613/0.089 ms
+```
+
+
 ## 换源
 
 推荐阿里云源
@@ -100,7 +132,7 @@ Flatpak 配置 [上海交通大学 镜像](https://mirrors.sjtug.sjtu.edu.cn/doc
 flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ```
 
-## FireFox 
+## FireFox
 
 下载最新版的 firefox
 
@@ -147,7 +179,7 @@ sudo apt install fcitx5 fcitx5-chinese-addons fcitx5-module-cloudpinyin
 使用以下命令编辑全局环境变量文件
 
 ```bash
-sudo vim 
+sudo vim
 ```
 
 在 **/etc/environment** 文件 末尾追加以下内容
@@ -201,12 +233,13 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 
 ### Sublime Text 4
 
-> Sublime Text 4 是一款功能强大的文本编辑器，专为开发者和程序员设计。它具有快速响应的界面和丰富的功能，包括多光标编辑、强大的搜索与替换、语法高亮和代码自动完成等。Sublime Text 4 支持多种编程语言，并可以通过插件进行扩展，满足各种开发需求。其灵活的配置和简洁的设计，使其成为许多开发者的首选工具。无论是进行日常编码还是复杂的项目开发，Sublime Text 4 都能提供出色的用户体验。
+
+> [Sublime Text 4](https://www.sublimetext.com/) 是一款功能强大的文本编辑器，专为开发者和程序员设计。它具有快速响应的界面和丰富的功能，包括多光标编辑、强大的搜索与替换、语法高亮和代码自动完成等。Sublime Text 4 支持多种编程语言，并可以通过插件进行扩展，满足各种开发需求。其灵活的配置和简洁的设计，使其成为许多开发者的首选工具。无论是进行日常编码还是复杂的项目开发，Sublime Text 4 都能提供出色的用户体验。
 
 ```bash
 cd ~/Downloads
-wget https://download.sublimetext.com/sublime-text_build-4180_amd64.deb
-sudo dpkg -i sublime-text_build-4180_amd64.deb
+wget https://download.sublimetext.com/sublime-text_build-4192_amd64.deb
+sudo dpkg -i sublime-text_build-4192_amd64.deb
 ```
 
 ```json
@@ -220,7 +253,7 @@ sudo dpkg -i sublime-text_build-4180_amd64.deb
 
 ## Sublime Merge
 
-> Sublime Merge 是一款高效的 Git 客户端，提供直观的用户界面和强大的功能，旨在简化版本控制的管理。它具有实时预览和语法高亮功能，方便用户查看和编辑代码变更。Sublime Merge 还支持快速搜索、分支管理和合并冲突解决，提升开发者的工作效率。此外，作为 Sublime Text 的姊妹产品，Sublime Merge 可以与 Sublime Text 无缝集成，适合需要高效 Git 工作流的开发者。
+> [https://flathub.org/apps/com.sublimemerge.App](https://flathub.org/apps/com.sublimemerge.App) 是一款高效的 Git 客户端，提供直观的用户界面和强大的功能，旨在简化版本控制的管理。它具有实时预览和语法高亮功能，方便用户查看和编辑代码变更。Sublime Merge 还支持快速搜索、分支管理和合并冲突解决，提升开发者的工作效率。此外，作为 Sublime Text 的姊妹产品，Sublime Merge 可以与 Sublime Text 无缝集成，适合需要高效 Git 工作流的开发者。
 
 ```bash
 flatpak install flathub com.sublimemerge.App
@@ -228,14 +261,14 @@ flatpak install flathub com.sublimemerge.App
 
 ### Typora
 
-> Typora 是一款简洁而直观的 Markdown 编辑器，提供所见即所得的写作体验。用户在编辑时可以实时预览文本格式，消除传统 Markdown 编辑器的分离感。Typora 支持多种主题和自定义样式，允许插入图片、表格和数学公式，适合学术写作、笔记和文档创作。无论是专业人士还是学生，Typora 都是一个理想的写作工具。
+> [Typora](https://flathub.org/apps/io.typora.Typora) 是一款简洁而直观的 Markdown 编辑器，提供所见即所得的写作体验。用户在编辑时可以实时预览文本格式，消除传统 Markdown 编辑器的分离感。Typora 支持多种主题和自定义样式，允许插入图片、表格和数学公式，适合学术写作、笔记和文档创作。无论是专业人士还是学生，Typora 都是一个理想的写作工具。
 
 ```bash
 cd ~/Downloads
 
-wget https://download2.typoraio.cn/linux/typora_1.9.3_amd64.deb
+wget https://download2.typoraio.cn/linux/typora_1.9.5_amd64.deb
 
-sudo dpkg -i ~/Downloads/typora_1.9.3_amd64.deb
+sudo dpkg -i ~/Downloads/typora_1.9.5_amd64.deb
 ```
 
 
@@ -311,15 +344,13 @@ npm install hexo-cli nrm -g
 npm install nrm  -g --registry=https://registry.npmmirror.com
 ```
 
-
-
 ## Java
 
 Java 使用
 
-
-
 ## Python
+
+[Simple Python Version Management](https://github.com/pyenv/pyenv)
 
 安装 pyenv
 
@@ -330,7 +361,7 @@ curl https://pyenv.run | bash
 添加环境配置
 
 ```bash
-echo '# Pyenv'
+echo '# Pyenv' >> ~/.zshrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
@@ -370,7 +401,6 @@ pip config set install.trusted-host pypi.tuna.tsinghua.edu.cn
 ```
 
 
-
 ## Docker
 
 安装 Docker
@@ -388,13 +418,13 @@ sudo usermod -aG docker $USER
 开机自启动 docker
 
 ```
-sudo systemctl enable docker.service 
+sudo systemctl enable docker.service
 ```
 
 启动 docker
 
 ```
-sudo systemctl start docker.service 
+sudo systemctl start docker.service
 ```
 
 
@@ -576,7 +606,7 @@ sudo apt install remmina -y
 
 ### ToDesk
 
-「ToDesk」 Linux 客户端 [https://www.todesk.com/linux.html](https://www.todesk.com/linux.html) 
+「ToDesk」 Linux 客户端 [https://www.todesk.com/linux.html](https://www.todesk.com/linux.html)
 
 ```bash
 wget https://dl.todesk.com/linux/todesk-v4.7.2.0-amd64.deb
@@ -697,4 +727,3 @@ flutter doctor --android-licenses
 ```bash
 sudo apt install -y clang cmake ninja-build  libgtk-3-dev
 ```
-
