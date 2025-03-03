@@ -9,7 +9,7 @@
 |**padding**|EdgeInsetsGeometry| 内边距,EdgeInsetsGeometry抽象类，由 EdgeInsets 实现                      |
 |**margin**|EdgeInsetsGeometry| 外边距,EdgeInsetsGeometry抽象类，由 EdgeInsets 实现                      |
 |**decoration**|Decoration| 容器装饰,Decoration抽象类， 由 BoxDecoration 实现，比如：背景颜色、背景图片、边框、圆角等 |
-|||  |
+|**alignment**|AlignmentGeometry| 设置子元素对齐方式 |
 |**child**|Widget| 子组件                                                            |
 
 ## 宽高
@@ -223,11 +223,7 @@ Container(
 ),
 ```
 
-如何设置 100% 的宽度或者高度，
-
-100%指 父元素的最大宽度或者高度，
-
-使用 **double.infinity** 代表 100%
+如何设置 100% 的宽度或者高度，100%指 父元素的最大宽度或者高度，使用 **double.infinity** 代表 100%
 
 ```dart
 Container(
@@ -246,6 +242,8 @@ Container(
 ),
 ```
 
+---
+
 ### 背景图片
 
 网络图片使用 NetworkImage 类， 本地图片使用 AssetImage 类
@@ -253,3 +251,36 @@ Container(
 **本地图片存储位置**： 通常放在 `assets/images`​ 目录下；`assets/images`​ 目录如果不存在，自己创建
 
 本地图片需要在 **pubspec.yaml** 文件中添加配置
+
+---
+
+## 对齐方式
+
+alignment 属性设置子元素对齐方式，类型为 AlignmentGeometry ；
+
+AlignmentGeometry 类为抽象类。
+
+Alignment 类继承了 AlignmentGeometry 抽象类，提供了常用的对齐方式
+
+- Alignment.topLeft 垂直方向靠顶部对齐，水平方向靠近左边对齐
+- Alignment.topCenter 垂直方向靠顶部对齐，水平方向居中对齐
+- Alignment.topRight 垂直方向靠顶部对齐，水平方向靠近右边对齐
+
+- Alignment.centerLeft 垂直方向居中对齐，水平方向靠近左边对齐
+- Alignment.center 垂直方向居中对齐，水平方向居中对齐
+- Alignment.centerRight 垂直方向居中对齐，水平方向靠近右边对齐
+
+- Alignment.bottomLeft 垂直方向靠底部对齐，水平方向靠近左边对齐
+- Alignment.bottomCenter 垂直方向靠底部对齐，水平方向居中对齐
+- Alignment.bottomRight 垂直方向靠底部对齐，水平方向靠近右边对齐
+
+****
+
+
+
+
+
+
+
+
+
