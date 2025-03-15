@@ -337,7 +337,7 @@ nvm install --lts
 个人常用的软件
 
 ```bash
-npm install hexo-cli nrm -g
+npm install hexo-cli nrm -g --registry=https://registry.npmmirror.com
 ```
 
 ```bash
