@@ -26,7 +26,10 @@ ToolBox [https://www.jetbrains.com/toolbox-app/](https://www.jetbrains.com/toolb
 ## PyCharm
 
 ```bash
-echo "-javaagent:$HOME/DevTools/jetbra/ja-netfilter.jar=jetbrains\n--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED" >> ~/.local/share/JetBrains/Toolbox/apps/pycharm-professional/bin/pycharm64.vmoptions
+PYCHARM_VMOPTIONS=~/.local/share/JetBrains/Toolbox/apps/pycharm/bin/pycharm64.vmoptions
+echo "-javaagent:$HOME/DevTools/jetbra/ja-netfilter.jar=jetbrains" >> $PYCHARM_VMOPTIONS
+echo "--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED" >> $PYCHARM_VMOPTIONS
+echo "--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED" >> $PYCHARM_VMOPTIONS
 ```
 
 ```
