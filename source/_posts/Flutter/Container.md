@@ -1,18 +1,29 @@
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
+
+Flutter组件
+
+<!-- more -->
+
 # Container
 
 常用的属性
 
-| 属性名         | 属性值的数据类型   | 属性值举例                                                   |
-| -------------- | ------------------ | ------------------------------------------------------------ |
-| **width**      | double             | 容器的宽度                                                   |
-| **height**     | double             | 容器的高度                                                   |
-| **padding**    | EdgeInsetsGeometry | 内边距,EdgeInsetsGeometry抽象类，由 EdgeInsets 实现          |
-| **margin**     | EdgeInsetsGeometry | 外边距,EdgeInsetsGeometry抽象类，由 EdgeInsets 实现          |
+| 属性名         | 属性值的数据类型   | 属性值举例                                                                                |
+| -------------- | ------------------ | ----------------------------------------------------------------------------------------- |
+| **width**      | double             | 容器的宽度                                                                                |
+| **height**     | double             | 容器的高度                                                                                |
+| **padding**    | EdgeInsetsGeometry | 内边距,EdgeInsetsGeometry抽象类，由 EdgeInsets 实现                                       |
+| **margin**     | EdgeInsetsGeometry | 外边距,EdgeInsetsGeometry抽象类，由 EdgeInsets 实现                                       |
 | **decoration** | Decoration         | 容器装饰,Decoration抽象类， 由 BoxDecoration 实现，比如：背景颜色、背景图片、边框、圆角等 |
-| **alignment**  | AlignmentGeometry  | 设置子元素对齐方式                                           |
-| **child**      | Widget             | 子组件                                                       |
-
-
+| **alignment**  | AlignmentGeometry  | 设置子元素对齐方式                                                                        |
+| **child**      | Widget             | 子组件                                                                                    |
 
 ## 宽、高
 
@@ -23,13 +34,11 @@ Container(
 ),
 ```
 
-
-
 ## 装饰
 
 ### 背景颜色
 
-````dart
+```dart
 Container(
     width: 300,
     height: 300,
@@ -37,14 +46,15 @@ Container(
         color: Colors.red,
     ),
 ),
-````
+```
+
 ### 边框
 
 **Border.all** 设置所有边框，**所有**代表 上、下、左、右
 
-* color 设置边框颜色
-* width 设置边框宽度
-* style 设置边框样式，**BorderStyle.solid** 表示实线，默认边框样式就是实线， 可以不设置；除了实线，默认没有提供其它样式
+- color 设置边框颜色
+- width 设置边框宽度
+- style 设置边框样式，**BorderStyle.solid** 表示实线，默认边框样式就是实线， 可以不设置；除了实线，默认没有提供其它样式
 
 ```dart
 Container(
@@ -59,8 +69,6 @@ Container(
     ),
 ),
 ```
-
-
 
 ### 边框圆角
 
@@ -138,8 +146,6 @@ Container(
 )
 ```
 
-
-
 ### 外边距
 
 ```dart
@@ -197,14 +203,7 @@ Container(
 ),
 ```
 
-
-
-
-
-
 ## 扩展知识
-
-
 
 ## 宽高
 
@@ -219,11 +218,7 @@ Container(
 
 > 默认宽度和高度由父容器影响，比如：
 >
-> 1. 
->
-> 
-
-
+> 1.
 
 ## 装饰
 
@@ -239,13 +234,9 @@ Container(
 ),
 ```
 
-
-
 ### 边框
 
-* 
-
-
+-
 
 ### 边框圆角
 
@@ -431,15 +422,6 @@ Container(
 
 ---
 
-## 
+##
 
-****
-
-
-
-
-
-
-
-
-
+---

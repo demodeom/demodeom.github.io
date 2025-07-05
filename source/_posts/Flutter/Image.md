@@ -1,3 +1,16 @@
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
+
+Flutter组件
+
+<!-- more -->
+
 # Image
 
 ## 网络图片
@@ -63,10 +76,10 @@ flutter:
 
 Flutter默认包含了一套Material Design的字体图标，在pubspec.yaml文件中的配置如下
 
-````
+```
 flutter:
     uses-material-design: true
-````
+```
 
 ```dart
 Icon(
@@ -75,7 +88,6 @@ Icon(
     size: 50.sp,
 ),
 ```
-
 
 | 属性  | 值数据类型 | 属性描述     |
 | ----- | ---------- | ------------ |
@@ -90,19 +102,19 @@ Icon(
 2. 将需要的图标添加到项目中
 3. 下载项目， 即可得到 ttf 字体文件
 4. 将字体文件复制到 assets/fonts 目录
-5.  将字体文件路径添加到 pubspec.yaml 文件
+5. 将字体文件路径添加到 pubspec.yaml 文件
 
-````yaml
+```yaml
 flutter:
   fonts:
-      fonts:
-        - asset: "assets/fonts/AliyunIconfont.ttf"
-````
+    fonts:
+      - asset: "assets/fonts/AliyunIconfont.ttf"
+```
 
 使用自定义图标
 
-````
+```
 Icon(IconData(0xe600, fontFamily: "AliyunIconfont"), color: Colors.red,)
-````
+```
 
 图标名字， 比如 `&#xe600;` 修改 `0xe600`

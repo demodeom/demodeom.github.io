@@ -1,3 +1,16 @@
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
+
+Flutter组件
+
+<!-- more -->
+
 # Text
 
 ## 基本使用
@@ -6,14 +19,13 @@
 Text("This is page Text 2.")
 ```
 
-
-| 属性          | 值数据类型    | 属性描述          |
-| ------------ | ------------- |---------------|
-| **style**    | TextStyle     | 文本样式          |
-| **maxLines** | int           | 文本显示行数        |
-| **overflow** | TextOverflow  | 多行文本，超出部分截断方式 |
-| **textDirection** | TextDirection | 文本方向|
-| **textAlign** | TextAlign     | 文本对齐方式        |
+| 属性              | 值数据类型    | 属性描述                   |
+| ----------------- | ------------- | -------------------------- |
+| **style**         | TextStyle     | 文本样式                   |
+| **maxLines**      | int           | 文本显示行数               |
+| **overflow**      | TextOverflow  | 多行文本，超出部分截断方式 |
+| **textDirection** | TextDirection | 文本方向                   |
+| **textAlign**     | TextAlign     | 文本对齐方式               |
 
 文本方向(TextDirection)(不常用)
 
@@ -23,16 +35,15 @@ Text("This is page Text 2.")
 文本对齐方式(textAlign)(不常用，不好用)
 
 - TextAlign.right
-- TextAlign.center 
+- TextAlign.center
 - TextAlign.left
 
 文本截断方式(overflow)(了解)
 
-- TextOverflow.ellipsis 
-- TextOverflow.clip 
-- TextOverflow.fade 
+- TextOverflow.ellipsis
+- TextOverflow.clip
+- TextOverflow.fade
 - TextOverflow.visible
-
 
 ```dart
  @override
@@ -54,24 +65,23 @@ Text("This is page Text 2.")
 
 ### TextStyle 属性
 
-
 使用 style 属性设置文本样式， 文本样式封装在 TextStyle 类中
 
-| 属性                | 值数据类型          | 属性描述                                                     |
-| ------------------- | ------------------- | ------------------------------------------------------------ |
-| **style.color**     | Color               | 文本颜色                                                     |
-| **fontSize**        | Color               | 字体大小                                                     |
-| **fontWeight**      | **FontWeight**      | 字体粗细(100-900)|
-| **wordSpacing**     | double              | 单词间距                                                     |
-| **letterSpacing**   | double              | 字母间距（英文）                                             |
-| **backgroundColor** | Color               | 文本背景颜色                                                 |
-| **decoration**      | **TextDecoration**  | 文本装饰 |
-| **decorationColor** | Color               | 装饰线的颜色                                                 |
-| **decorationStyle** | TextDecorationStyle | 装饰线的样式|
-| decorationThickness | double              | 装饰线粗细                                                   |
-| letterSpacing       | double              | 设置字母之间的间距                                           |
-| wordSpacing         | double              | 设置单词之间的间距                                           |
-| **fontFamily**      | string              | 字体 名字（微软雅黑、宋体）                                  |
+| 属性                | 值数据类型          | 属性描述                    |
+| ------------------- | ------------------- | --------------------------- |
+| **style.color**     | Color               | 文本颜色                    |
+| **fontSize**        | Color               | 字体大小                    |
+| **fontWeight**      | **FontWeight**      | 字体粗细(100-900)           |
+| **wordSpacing**     | double              | 单词间距                    |
+| **letterSpacing**   | double              | 字母间距（英文）            |
+| **backgroundColor** | Color               | 文本背景颜色                |
+| **decoration**      | **TextDecoration**  | 文本装饰                    |
+| **decorationColor** | Color               | 装饰线的颜色                |
+| **decorationStyle** | TextDecorationStyle | 装饰线的样式                |
+| decorationThickness | double              | 装饰线粗细                  |
+| letterSpacing       | double              | 设置字母之间的间距          |
+| wordSpacing         | double              | 设置单词之间的间距          |
+| **fontFamily**      | string              | 字体 名字（微软雅黑、宋体） |
 
 字体粗细(FontWeight)(100-900)
 
@@ -80,7 +90,6 @@ Text("This is page Text 2.")
 - **FontWeight.w100**
 - **FontWeight.w200**
 - ...
-
 
 文本装饰(TextDecoration)
 
@@ -94,7 +103,7 @@ Text("This is page Text 2.")
 - **TextDecorationStyle.double**
 - **TextDecorationStyle.dashed**
 - **TextDecorationStyle.dotted**
-- **TextDecorationStyle.wavy** 
+- **TextDecorationStyle.wavy**
 
 ```Dart
 Text(
@@ -135,7 +144,6 @@ Text(
 
 字体下载网站 [https://ztxz.org.cn/](https://ztxz.org.cn/)
 
-
 创建目录 assets/fonts 目录
 将下载的 ttf 字体文件， 放到 assets/fonts 目录
 
@@ -151,8 +159,8 @@ flutter:
 
 使用
 
-````
+```
 Text("这是一段文本",style: TextStyle(
     fontFamily: "中國龍毛隸書"
 ))
-````
+```

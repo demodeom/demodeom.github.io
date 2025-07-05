@@ -1,5 +1,17 @@
-# ScreenUtil
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
 
+Flutter组件
+
+<!-- more -->
+
+# ScreenUtil
 
 不同的设备， 尺寸不同, 最简单适配方式是： 等比缩放
 

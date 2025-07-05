@@ -1,3 +1,16 @@
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
+
+Flutter组件
+
+<!-- more -->
+
 # Dart快速上手
 
 ## Hello World
@@ -75,7 +88,7 @@ final n1 = 3.1415926;
 **final** 和 **const** 区别
 
 ```dart
-// 报错 
+// 报错
 // Const variables must be initialized with a constant value.
 // Const 变量必须进行初始化的一个恒定值。
 // const d1 =  DateTime.now();
@@ -85,8 +98,6 @@ final d2 = DateTime.now();
 ```
 
 final 定义常量， 定义时可以不赋值，只能赋值一次；final 是惰性初始化的，只有在第一次使用前才初始化
-
-
 
 ### 注释
 
@@ -163,8 +174,6 @@ var m2 = {
 };
 ```
 
-
-
 ```dart
 var map1 = new Map();
 map1["name"] = "张三";
@@ -172,13 +181,9 @@ map1["age"] = 18;
 map1["sex"] = "男";
 ```
 
-
-
 ```dart
  var userName = map2["name"];
 ```
-
-
 
 ### 类型转换
 
@@ -212,10 +217,7 @@ print(10~/3);  // 3
 print(10%3);  // 1
 ```
 
-
-
 ### 关系运算符
-
 
 `==`、 `!=`、 `<` 、`<=` 、`>` 、`>=`
 
@@ -231,8 +233,6 @@ print(10%3);  // 1
 
 ## 分支
 
-
-
 ```dart
 var a = "3.14";
 var b = 3.14;
@@ -243,8 +243,6 @@ if (a == b){
 	print("不相等");
 }
 ```
-
-
 
 ```dart
 if(){
@@ -304,7 +302,7 @@ do{
 
 ### continue
 
-**continue** 可在 while  for do while 循环中使用
+**continue** 可在 while for do while 循环中使用
 
 ```
 continue 跳过当此循环
@@ -312,13 +310,11 @@ continue 跳过当此循环
 
 ### break
 
-break 可以在 switch  while for 循环中使用
+break 可以在 switch while for 循环中使用
 
 ```
 break 跳出(中止)循环
 ```
-
-
 
 ## 遍历
 
@@ -332,16 +328,12 @@ break 跳出(中止)循环
   }
 ```
 
-
-
 ```dart
 var list1 = ["桃子", "苹果", "橘子"];
 list1.forEach((v){
     print(v);
 });
 ```
-
-
 
 ### Map 遍历
 
@@ -378,26 +370,22 @@ void main(List<String> args) {
 
 ```
 
-
-
 ### 构造函数
 
 ```dart
 class Person{
   String userName = "张三";
   int userAge = 18;
-  
+
   Person(){
     print("构造方法");
   }
-  
+
   void getInfo(){
     print("我的名字是 ${this.userName}， 我今年 ${this.userAge} 岁");
   }
 }
 ```
-
-
 
 ```dart
 class Person{
@@ -415,8 +403,6 @@ class Person{
 }
 ```
 
-
-
 ```dart
 class Person{
   String userName="";
@@ -429,8 +415,6 @@ class Person{
   }
 }
 ```
-
-
 
 ```dart
 class Person{
@@ -482,15 +466,13 @@ void main(List<String> args) {
 }
 ```
 
-
-
 ### 静态属性， 静态方法
 
 static
 
 ### 继承
 
-继承  extends
+继承 extends
 
 调用父类的构造方法
 

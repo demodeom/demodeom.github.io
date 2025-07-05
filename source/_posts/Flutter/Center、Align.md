@@ -1,3 +1,16 @@
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
+
+Flutter组件
+
+<!-- more -->
+
 # 排列方向
 
 并非所有组件都像 Container 组件一样，提供了相应的属性可以设置子元素对齐方式
@@ -34,4 +47,3 @@ Align(
     child: Text("Hello Text"),
 )
 ```
-

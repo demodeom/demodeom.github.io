@@ -1,5 +1,17 @@
-# Row
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
 
+Flutter组件
+
+<!-- more -->
+
+# Row
 
 Row 组件，主轴方向 水平，
 
@@ -7,12 +19,12 @@ Row 组件，主轴方向 水平，
 
 **mainAxisAlignment** 设置主轴上元素的对齐方式，
 
-* **MainAxisAlignment.start**
-* **MainAxisAlignment.end**
-* **MainAxisAlignment.center** 居中
-* **MainAxisAlignment.spaceBetween** 两端对齐
-* **MainAxisAlignment.spaceAround**
-* **MainAxisAlignment.spaceEvenly**
+- **MainAxisAlignment.start**
+- **MainAxisAlignment.end**
+- **MainAxisAlignment.center** 居中
+- **MainAxisAlignment.spaceBetween** 两端对齐
+- **MainAxisAlignment.spaceAround**
+- **MainAxisAlignment.spaceEvenly**
 
 ```dart
 Row(
@@ -32,10 +44,10 @@ Row(
 
 **crossAxisAlignment** 设置交叉轴对齐方式
 
-* **CrossAxisAlignment.start** 对齐起点
-* **CrossAxisAlignment.end** 对齐重点
-* **CrossAxisAlignment.center** 居中
-* **CrossAxisAlignment.stretch** 拉伸
+- **CrossAxisAlignment.start** 对齐起点
+- **CrossAxisAlignment.end** 对齐重点
+- **CrossAxisAlignment.center** 居中
+- **CrossAxisAlignment.stretch** 拉伸
 
 ```
 Row(

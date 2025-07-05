@@ -1,3 +1,16 @@
+---
+title: Flutter组件
+date: 2024-11-09 15:31:41
+tags:
+	- Flutter
+categories:
+  - Flutter
+---
+
+Flutter组件
+
+<!-- more -->
+
 # Win
 
 Flutter 官方文档地址 [安装 Flutter SDK](https://docs.flutter.dev/get-started/install/windows/mobile)
@@ -22,11 +35,9 @@ Flutter 官方文档地址 [安装 Flutter SDK](https://docs.flutter.dev/get-sta
 - 『Git for Windows』[https://git-scm.com/downloads/win](https://git-scm.com/downloads/win)
 - 『Android Studio』[https://developer.android.com/studio/install#windows](https://developer.android.com/studio/install#windows)
 
-
 ### 下载 Flutter SDK
 
 『 Flutter Sdk 下载地址 』 [https://docs.flutter.dev/release/archive#stable-channel](https://docs.flutter.dev/release/archive#stable-channel)
-
 
 ### 安装Flutter {id="flutter_1"}
 
@@ -43,7 +54,6 @@ Flutter 官方文档地址 [安装 Flutter SDK](https://docs.flutter.dev/get-sta
 1. **新建**系统环境变量，变量名： **PUB_HOSTED_URL**， 变量值：**https://pub.flutter-io.cn**
 2. 新建系统环境变量，变量名： **FLUTTER_STORAGE_BASE_URL**， 变量值：**https://storage.flutter-io.cn**
 
-
 ## 安装 AndroidStudio
 
 1. 使用 **JetBrain ToolBox** 安装 **AndroidStudio**
@@ -56,7 +66,6 @@ Flutter 官方文档地址 [安装 Flutter SDK](https://docs.flutter.dev/get-sta
 
 修改系统环境变量Path，添加路径 **%USERPROFILE%\AppData\Local\Android\Sdk\platform-tools**
 
-
 ### C++ 环境
 
 Windows 运行 Flutter 需要 C++ 环境， 使用软件 Visual Studio 安装 C++ 环境
@@ -65,8 +74,6 @@ Visual Studio Community 下载地址 [https://visualstudio.microsoft.com/vs/comm
 
 1. 下载、安装 Visual Studio Community
 2. 安装时选择 **c++ 桌面**开发环境
-
-
 
 ```Bash
 PS C:\Users\demodeom> flutter doctor
@@ -97,4 +104,3 @@ flutter create flutter_example
 【中国用户】 建议修改 `android\gradle\wrapper\gradle-wrapper.properties` 文件
 
 将 `services.gradle.org/distributions` 修改为 `mirrors.cloud.tencent.com/gradle`
-
