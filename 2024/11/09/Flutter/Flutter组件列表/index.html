@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Flutter组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter组件">
+<meta property="og:url" content="http://example.com/2024/11/09/Flutter/Flutter%E7%BB%84%E4%BB%B6%E5%88%97%E8%A1%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Flutter组件">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-09T07:31:41.000Z">
+<meta property="article:modified_time" content="2025-07-17T22:48:09.840Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Flutter组件 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Flutter组件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-09 15:31" pubdate>
+          2024年11月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          821 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Flutter组件</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Flutter组件</p>
+<span id="more"></span>
+
+<h1 id="Flutter组件列表"><a href="#Flutter组件列表" class="headerlink" title="Flutter组件列表"></a>Flutter组件列表</h1><p>Flutter 3 提供了丰富的组件库，用于构建跨平台的应用程序。以下是一些主要的组件分类及其示例：</p>
+<h3 id="1-基础组件"><a href="#1-基础组件" class="headerlink" title="1. 基础组件"></a>1. <strong>基础组件</strong></h3><ul>
+<li><code>Text</code>: 显示文本。</li>
+<li><code>Row</code>, <code>Column</code>: 用于水平和垂直布局。</li>
+<li><code>Container</code>: 用于装饰、定位和尺寸控制。</li>
+<li><code>Padding</code>: 添加内边距。</li>
+<li><code>Center</code>: 将子组件居中。</li>
+<li><code>Align</code>: 对齐子组件。</li>
+<li><code>Stack</code>: 用于叠加多个组件。</li>
+<li><code>Expanded</code>, <code>Flexible</code>: 用于灵活布局。</li>
+<li><code>SizedBox</code>: 固定尺寸的盒子。</li>
+<li><code>Spacer</code>: 用于在布局中创建空间。</li>
+</ul>
+<h3 id="2-Material-Design-组件"><a href="#2-Material-Design-组件" class="headerlink" title="2. Material Design 组件"></a>2. <strong>Material Design 组件</strong></h3><ul>
+<li><code>AppBar</code>: 应用栏。</li>
+<li><code>Scaffold</code>: 页面骨架。</li>
+<li><code>FloatingActionButton</code>: 浮动按钮。</li>
+<li><code>Drawer</code>: 侧边抽屉。</li>
+<li><code>BottomNavigationBar</code>: 底部导航栏。</li>
+<li><code>TabBar</code>, <code>TabBarView</code>: 选项卡。</li>
+<li><code>Card</code>: 卡片布局。</li>
+<li><code>ListTile</code>: 列表项。</li>
+<li><code>Icon</code>: 图标。</li>
+<li><code>IconButton</code>: 图标按钮。</li>
+<li><code>Button</code> (如 <code>ElevatedButton</code>, <code>TextButton</code>, <code>OutlinedButton</code>): 按钮。</li>
+<li><code>TextField</code>: 文本输入框。</li>
+<li><code>Checkbox</code>, <code>Radio</code>, <code>Switch</code>: 选择控件。</li>
+<li><code>Slider</code>: 滑块。</li>
+<li><code>Dialog</code>, <code>AlertDialog</code>, <code>SimpleDialog</code>: 对话框。</li>
+<li><code>SnackBar</code>: 底部提示条。</li>
+<li><code>BottomSheet</code>: 底部弹出面板。</li>
+</ul>
+<h3 id="3-Cupertino-iOS风格-组件"><a href="#3-Cupertino-iOS风格-组件" class="headerlink" title="3. Cupertino (iOS风格) 组件"></a>3. <strong>Cupertino (iOS风格) 组件</strong></h3><ul>
+<li><code>CupertinoApp</code>: iOS风格的应用。</li>
+<li><code>CupertinoButton</code>: iOS风格的按钮。</li>
+<li><code>CupertinoNavigationBar</code>: iOS风格的导航栏。</li>
+<li><code>CupertinoTabBar</code>: iOS风格的标签栏。</li>
+<li><code>CupertinoTextField</code>: iOS风格的文本输入框。</li>
+<li><code>CupertinoPicker</code>: iOS风格的选择器。</li>
+<li><code>CupertinoDatePicker</code>: iOS风格的日期选择器。</li>
+<li><code>CupertinoAlertDialog</code>: iOS风格的警告对话框。</li>
+</ul>
+<h3 id="4-布局组件"><a href="#4-布局组件" class="headerlink" title="4. 布局组件"></a>4. <strong>布局组件</strong></h3><ul>
+<li><code>ListView</code>: 可滚动的列表。</li>
+<li><code>GridView</code>: 网格布局。</li>
+<li><code>Table</code>: 表格布局。</li>
+<li><code>Wrap</code>: 自动换行布局。</li>
+<li><code>Flow</code>: 自定义流式布局。</li>
+<li><code>CustomScrollView</code>: 自定义滚动视图。</li>
+<li><code>SingleChildScrollView</code>: 单子组件的滚动视图。</li>
+<li><code>PageView</code>: 分页视图。</li>
+</ul>
+<h3 id="5-动画和过渡组件"><a href="#5-动画和过渡组件" class="headerlink" title="5. 动画和过渡组件"></a>5. <strong>动画和过渡组件</strong></h3><ul>
+<li><code>AnimatedContainer</code>: 动画容器。</li>
+<li><code>AnimatedOpacity</code>: 动画透明度。</li>
+<li><code>Hero</code>: 页面间共享元素过渡。</li>
+<li><code>AnimatedBuilder</code>: 自定义动画构建器。</li>
+<li><code>TweenAnimationBuilder</code>: 补间动画构建器。</li>
+<li><code>FadeTransition</code>: 淡入淡出过渡。</li>
+<li><code>ScaleTransition</code>: 缩放过渡。</li>
+<li><code>RotationTransition</code>: 旋转过渡。</li>
+</ul>
+<h3 id="6-交互组件"><a href="#6-交互组件" class="headerlink" title="6. 交互组件"></a>6. <strong>交互组件</strong></h3><ul>
+<li><code>GestureDetector</code>: 手势检测。</li>
+<li><code>InkWell</code>: 水波纹效果。</li>
+<li><code>Dismissible</code>: 可滑动删除的组件。</li>
+<li><code>Draggable</code>, <code>DragTarget</code>: 拖拽交互。</li>
+<li><code>LongPressDraggable</code>: 长按拖拽。</li>
+<li><code>InteractiveViewer</code>: 可缩放和拖拽的视图。</li>
+</ul>
+<h3 id="7-绘图和效果组件"><a href="#7-绘图和效果组件" class="headerlink" title="7. 绘图和效果组件"></a>7. <strong>绘图和效果组件</strong></h3><ul>
+<li><code>CustomPaint</code>: 自定义绘制。</li>
+<li><code>ClipRRect</code>: 圆角裁剪。</li>
+<li><code>ClipOval</code>: 椭圆裁剪。</li>
+<li><code>ClipPath</code>: 路径裁剪。</li>
+<li><code>DecoratedBox</code>: 装饰盒子。</li>
+<li><code>Transform</code>: 变换效果。</li>
+<li><code>Opacity</code>: 透明度控制。</li>
+<li><code>ShaderMask</code>: 着色器遮罩。</li>
+</ul>
+<h3 id="8-异步和状态管理组件"><a href="#8-异步和状态管理组件" class="headerlink" title="8. 异步和状态管理组件"></a>8. <strong>异步和状态管理组件</strong></h3><ul>
+<li><code>FutureBuilder</code>: 异步数据构建器。</li>
+<li><code>StreamBuilder</code>: 流数据构建器。</li>
+<li><code>ValueListenableBuilder</code>: 值监听构建器。</li>
+<li><code>AnimatedSwitcher</code>: 组件切换动画。</li>
+<li><code>Overlay</code>: 覆盖层。</li>
+</ul>
+<h3 id="9-平台和系统集成组件"><a href="#9-平台和系统集成组件" class="headerlink" title="9. 平台和系统集成组件"></a>9. <strong>平台和系统集成组件</strong></h3><ul>
+<li><code>SafeArea</code>: 安全区域。</li>
+<li><code>Platform</code>: 平台检测。</li>
+<li><code>MediaQuery</code>: 媒体查询。</li>
+<li><code>OrientationBuilder</code>: 方向检测。</li>
+<li><code>LayoutBuilder</code>: 布局约束检测。</li>
+</ul>
+<h3 id="10-高级组件"><a href="#10-高级组件" class="headerlink" title="10. 高级组件"></a>10. <strong>高级组件</strong></h3><ul>
+<li><code>IndexedStack</code>: 索引堆栈。</li>
+<li><code>Visibility</code>: 控制组件可见性。</li>
+<li><code>AbsorbPointer</code>: 吸收指针事件。</li>
+<li><code>IgnorePointer</code>: 忽略指针事件。</li>
+<li><code>BackdropFilter</code>: 背景滤镜。</li>
+<li><code>ShaderMask</code>: 着色器遮罩。</li>
+</ul>
+<h3 id="11-Web-和桌面专用组件"><a href="#11-Web-和桌面专用组件" class="headerlink" title="11. Web 和桌面专用组件"></a>11. <strong>Web 和桌面专用组件</strong></h3><ul>
+<li><code>MouseRegion</code>: 鼠标区域检测。</li>
+<li><code>Tooltip</code>: 工具提示。</li>
+<li><code>FocusScope</code>: 焦点管理。</li>
+<li><code>Shortcuts</code>: 快捷键支持。</li>
+<li><code>Actions</code>: 动作管理。</li>
+</ul>
+<h3 id="12-插件和第三方集成"><a href="#12-插件和第三方集成" class="headerlink" title="12. 插件和第三方集成"></a>12. <strong>插件和第三方集成</strong></h3><ul>
+<li><code>WebView</code>: 网页视图。</li>
+<li><code>Map</code>: 地图集成。</li>
+<li><code>Camera</code>: 相机集成。</li>
+<li><code>VideoPlayer</code>: 视频播放器。</li>
+<li><code>AudioPlayer</code>: 音频播放器。</li>
+</ul>
+<h3 id="13-测试和调试组件"><a href="#13-测试和调试组件" class="headerlink" title="13. 测试和调试组件"></a>13. <strong>测试和调试组件</strong></h3><ul>
+<li><code>Semantics</code>: 语义化标签。</li>
+<li><code>DebugPaintSizeEnabled</code>: 调试绘制大小。</li>
+<li><code>DebugPaintPointersEnabled</code>: 调试指针事件。</li>
+</ul>
+<h3 id="14-其他"><a href="#14-其他" class="headerlink" title="14. 其他"></a>14. <strong>其他</strong></h3><ul>
+<li><code>RichText</code>: 富文本。</li>
+<li><code>Spacer</code>: 间距。</li>
+<li><code>Divider</code>: 分割线。</li>
+<li><code>CircularProgressIndicator</code>: 圆形进度条。</li>
+<li><code>LinearProgressIndicator</code>: 线性进度条。</li>
+</ul>
+<p>这些组件是 Flutter 3 中常用的部分，Flutter 的组件库非常庞大且灵活，开发者可以根据需求组合和自定义这些组件来构建复杂的用户界面。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Flutter/" class="category-chain-item">Flutter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Flutter/" class="print-no-link">#Flutter</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Flutter组件</div>
+      <div>http://example.com/2024/11/09/Flutter/Flutter组件列表/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/09/Arch/01.%E9%95%9C%E5%83%8F/" title="Arch 国内镜像配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Arch 国内镜像配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/09/Flutter/Image/" title="Flutter组件">
+                        <span class="hidden-mobile">Flutter组件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

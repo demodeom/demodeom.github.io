@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Fedora（发音：英 [fɪ’dɔːrə]，美 [fɪ’dɔrə]）是一个由Fedora项目社区开发、红帽公司赞助的开源操作系统，也被称为Fedora Linux. 随着版本的更新，Fedora不断引入新技术和桌面环境。Fedora 40版本则更新了GNOME桌面至46版，并首次自带PyTorch。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fedora40个人使用配置">
+<meta property="og:url" content="http://example.com/2024/09/03/Others/Fedora-40-%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Fedora（发音：英 [fɪ’dɔːrə]，美 [fɪ’dɔrə]）是一个由Fedora项目社区开发、红帽公司赞助的开源操作系统，也被称为Fedora Linux. 随着版本的更新，Fedora不断引入新技术和桌面环境。Fedora 40版本则更新了GNOME桌面至46版，并首次自带PyTorch。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-02T22:09:49.000Z">
+<meta property="article:modified_time" content="2025-07-17T22:48:09.840Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Fedora40个人使用配置 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fedora40个人使用配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-03 06:09" pubdate>
+          2024年9月3日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Fedora40个人使用配置</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Fedora（发音：英 [fɪ’dɔːrə]，美 [fɪ’dɔrə]）是一个由Fedora项目社区开发、红帽公司赞助的开源操作系统，也被称为Fedora Linux.</p>
+<p>随着版本的更新，Fedora不断引入新技术和桌面环境。Fedora 40版本则更新了GNOME桌面至46版，并首次自带PyTorch。</p>
+<span id="more"></span>
+
+<h2 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h2><h3 id="系统镜像"><a href="#系统镜像" class="headerlink" title="系统镜像"></a>系统镜像</h3><p>清华大学 Fedora 镜像文档地址 <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/fedora/">https://mirrors.tuna.tsinghua.edu.cn/help/fedora/</a></p>
+<p> Fedora 40</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> sed -e <span class="hljs-string">&#x27;s|^metalink=|#metalink=|g&#x27;</span> \<br>    -e <span class="hljs-string">&#x27;s|^#baseurl=http://download.example/pub/fedora/linux|baseurl=https://mirrors.tuna.tsinghua.edu.cn/fedora|g&#x27;</span> \<br>    -i.bak \<br>    /etc/yum.repos.d/fedora.repo \<br>    /etc/yum.repos.d/fedora-modular.repo \<br>    /etc/yum.repos.d/fedora-updates.repo \<br>    /etc/yum.repos.d/fedora-updates-modular.repo<br></code></pre></td></tr></table></figure>
+
+<p>更新缓存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf makecache<br></code></pre></td></tr></table></figure>
+
+<p>更新系统</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf update<br></code></pre></td></tr></table></figure>
+
+<p>系统更新升级之后， 建议重启系统</p>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><p>推荐 阿里云 DNS</p>
+<p> 阿里云 DNS IP4</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">223.5.5.5</span>,<span class="hljs-number">223</span>.<span class="hljs-number">6</span>.<span class="hljs-number">6</span>.<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+
+<p> 阿里云 DNS IP6</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2400</span>:<span class="hljs-number">3200</span>::<span class="hljs-number">1</span>,<span class="hljs-number">2400</span>:<span class="hljs-number">3200</span>:baba::<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>DNS 修改前</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+<p>DNS 修改后</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs routeros">➜  ~<span class="hljs-built_in"> ping </span>raw.githubusercontent.com -c3<span class="hljs-built_in"></span><br><span class="hljs-built_in">PING </span>raw.githubusercontent.com (2606:50c0:8003::154) 56 字节的数据<br>64 字节，来自 2606:50c0:8003::154: <span class="hljs-attribute">icmp_seq</span>=1 <span class="hljs-attribute">ttl</span>=52 时间=144 毫秒<br>64 字节，来自 2606:50c0:8003::154: <span class="hljs-attribute">icmp_seq</span>=2 <span class="hljs-attribute">ttl</span>=52 时间=145 毫秒<br>64 字节，来自 2606:50c0:8003::154: <span class="hljs-attribute">icmp_seq</span>=3 <span class="hljs-attribute">ttl</span>=52 时间=165 毫秒<br><br>--- raw.githubusercontent.com<span class="hljs-built_in"> ping </span>统计 ---<br>已发送 3 个包， 已接收 3 个包, 0% packet loss, time 2002ms<br>rtt min/avg/max/mdev = 143.506/151.331/165.299/9.900 ms<br></code></pre></td></tr></table></figure>
+
+<h3 id="必备软件"><a href="#必备软件" class="headerlink" title="必备软件"></a>必备软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install git curl wget zsh vim<br></code></pre></td></tr></table></figure>
+
+<h3 id="终端美化、优化"><a href="#终端美化、优化" class="headerlink" title="终端美化、优化"></a>终端美化、优化</h3><p>oh my zsh 是一款不错的插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="软件管理"><a href="#软件管理" class="headerlink" title="软件管理"></a>软件管理</h2><h3 id="Flatpak"><a href="#Flatpak" class="headerlink" title="Flatpak"></a>Flatpak</h3><p>Flatpak 配置 上海交通大学 镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo<br>flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub<br></code></pre></td></tr></table></figure>
+
+<h3 id="AppImage-Launcher"><a href="#AppImage-Launcher" class="headerlink" title="AppImage Launcher"></a>AppImage Launcher</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">## 下载 AppImageLauncher</span><br>wget https://mirror.ghproxy.com/https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm<br><br><span class="hljs-comment">#安装 AppImageLauncher</span><br><span class="hljs-built_in">sudo</span> dnf install ./appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm<br></code></pre></td></tr></table></figure>
+
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>Docker 官方安装文档 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/fedora/#install-using-the-repository">https://docs.docker.com/engine/install/fedora/#install-using-the-repository</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf -y install dnf-plugins-core<br><span class="hljs-built_in">sudo</span> dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo<br><br><span class="hljs-built_in">sudo</span> dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin<br></code></pre></td></tr></table></figure>
+
+<p>假如安装失败，尝试修改文件 <strong>&#x2F;etc&#x2F;yum.repos.d&#x2F;docker-ce.repo</strong> 文件，将 <strong>docker-ce-test</strong> 下方的 <strong>enabled&#x3D;0</strong> 修改为 <strong>enabled&#x3D;1</strong></p>
+<p>参考文章 <a target="_blank" rel="noopener" href="https://blog.csdn.net/kkk990101/article/details/130240982">Linux安装docker，报错Error downloading packages: 3:docker-ce-23.0.4-1.el7.x86_64:</a></p>
+<h3 id="WebAppManager"><a href="#WebAppManager" class="headerlink" title="WebAppManager"></a>WebAppManager</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub net.codelogistics.webapps<br></code></pre></td></tr></table></figure>
+
+<h2 id="Gnome-工具"><a href="#Gnome-工具" class="headerlink" title="Gnome 工具"></a>Gnome 工具</h2><h3 id="gnome-tweaks"><a href="#gnome-tweaks" class="headerlink" title="gnome-tweaks"></a>gnome-tweaks</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install gnome-tweaks<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="ExtensionManager"><a href="#ExtensionManager" class="headerlink" title="ExtensionManager"></a>ExtensionManager</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub com.mattjakeman.ExtensionManager<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Clash"><a href="#Clash" class="headerlink" title="Clash"></a>Clash</h2><p>作为码农，没有代理是痛苦的</p>
+<p>百度三天可能无法搜索到的解决方法；Google + 英文 可能一分钟就找到了</p>
+<p>Clash 只是一个跨平台的客户端代理软件，支持多种协议，代理服务器仍需自己搭建或者购买</p>
+<p>GitHub 搜索关键字 free ，可以找到免费的代理服务，但是免费是有代价的</p>
+<p>代理仅可可用于学习，请勿用于其他用途</p>
+<p>Clash GitHub 下载地址 <a target="_blank" rel="noopener" href="https://github.com/clash-verge-rev/clash-verge-rev/releases">https://github.com/clash-verge-rev/clash-verge-rev/releases</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载 clash</span><br>wget https://cors.isteed.cc/github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.7.7/clash-verge-1.7.7-1.x86_64.rpm<br><span class="hljs-comment"># 安装 clash</span><br><span class="hljs-built_in">sudo</span> dnf install clash-verge-1.7.7-1.x86_64.rpm<br></code></pre></td></tr></table></figure>
+
+<p>推荐代理服务商</p>
+<ul>
+<li>三毛导航 <a target="_blank" rel="noopener" href="https://三毛导航.com/">https:&#x2F;&#x2F;三毛导航.com&#x2F;</a> ， 很便宜， 所以叫做 三毛</li>
+</ul>
+<h2 id="文本、代码编辑器"><a href="#文本、代码编辑器" class="headerlink" title="文本、代码编辑器"></a>文本、代码编辑器</h2><h3 id="Sublime-Text-4"><a href="#Sublime-Text-4" class="headerlink" title="Sublime Text 4"></a>Sublime Text 4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg<br><br><span class="hljs-built_in">sudo</span> dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo<br><br><span class="hljs-built_in">sudo</span> dnf install sublime-text<br></code></pre></td></tr></table></figure>
+
+<h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub com.visualstudio.code<br></code></pre></td></tr></table></figure>
+
+<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub io.typora.Typora<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="JetBrain"><a href="#JetBrain" class="headerlink" title="JetBrain"></a>JetBrain</h3><p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/lp/toolbox/">JetBrains Toolbox</a></p>
+<p><a target="_blank" rel="noopener" href="https://3.jetbra.in/">https://3.jetbra.in/</a></p>
+<p>idea</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains&quot;</span> &gt;&gt; ~/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea64.vmoptions<br></code></pre></td></tr></table></figure>
+
+<p>pycharm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains&quot;</span> &gt;&gt; ~/.local/share/JetBrains/Toolbox/apps/pycharm-professional/bin/pycharm64.vmoptions<br></code></pre></td></tr></table></figure>
+
+<p>clion</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains&quot;</span> &gt;&gt; ~/.local/share/JetBrains/Toolbox/apps/clion/bin/clion64.vmoptions<br></code></pre></td></tr></table></figure>
+
+<p>phpstorm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains&quot;</span> &gt;&gt; ~/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm64.vmoptions<br></code></pre></td></tr></table></figure>
+
+<p>webstorm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED\n--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED\n-javaagent:/home/demodeom/Documents/jetbra/ja-netfilter.jar=jetbrains&quot;</span> &gt;&gt; ~/.local/share/JetBrains/Toolbox/apps/webstorm/bin/webstorm64.vmoptions<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="输入法-Fcitx5"><a href="#输入法-Fcitx5" class="headerlink" title="输入法 Fcitx5"></a>输入法 Fcitx5</h2><p>安装输入法 Fcitx5</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install fcitx5 fcitx5-chinese-addons<br></code></pre></td></tr></table></figure>
+
+<p>将 Fcitx5 添加到开机自启动</p>
+<p>修改全局环境配置文件 &#x2F;etc&#x2F;environment</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/environment<br></code></pre></td></tr></table></figure>
+
+<p>在文件 &#x2F;etc&#x2F;environment 末尾追加以下内容</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">GTK_IM_MODULE</span>=fcitx<br><span class="hljs-attr">QT_IM_MODULE</span>=fcitx<br><span class="hljs-attr">XMODIFIERS</span>=@im=fcitx<br><span class="hljs-attr">INPUT_METHOD</span>=fcitx<br><span class="hljs-attr">SDL_IM_MODULE</span>=fcitx<br><span class="hljs-attr">GLFW_IM_MODULE</span>=ibus<br></code></pre></td></tr></table></figure>
+
+<p>使用 <strong>ExtensionManager</strong> 程序安装扩展  <strong>Input Method Panel</strong> 优化输入法</p>
+<p>重启系统生效</p>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><h3 id="Google-Chrome"><a href="#Google-Chrome" class="headerlink" title="Google Chrome"></a>Google Chrome</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub com.google.Chrome<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="FireFox"><a href="#FireFox" class="headerlink" title="FireFox"></a>FireFox</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub org.mozilla.firefox<br></code></pre></td></tr></table></figure>
+
+
+
+<p>FireFox 常用扩展</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/%E8%85%BE%E8%AE%AF%E7%BF%BB%E8%AF%91/">腾讯翻译</a></li>
+<li><a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/gnome-shell-integration/">GNOME Shell integration</a></li>
+<li><a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/lastpass-password-manager/">LastPass Password Manager</a></li>
+<li><a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/">Tampermonkey</a></li>
+</ul>
+<p>Tampermonkey 常用脚本</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/412245-github-%E5%A2%9E%E5%BC%BA-%E9%AB%98%E9%80%9F%E4%B8%8B%E8%BD%BD">Github 增强 - 高速下载</a></li>
+<li><a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN/scripts/378351-csdngreener-csdn%E5%B9%BF%E5%91%8A%E5%AE%8C%E5%85%A8%E8%BF%87%E6%BB%A4-%E5%85%8D%E7%99%BB%E5%BD%95-%E4%B8%AA%E6%80%A7%E5%8C%96%E6%8E%92%E7%89%88-%E6%9C%80%E5%BC%BA%E8%80%81%E7%89%8C%E8%84%9A%E6%9C%AC-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0">CSDN广告完全过滤</a></li>
+</ul>
+<h3 id="Brave"><a href="#Brave" class="headerlink" title="Brave"></a>Brave</h3><blockquote>
+<p>最近在 Google Chrome 使用过程中， 经常卡顿， 故安装 Brave 备用</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">flatpak install flathub com.brave.Browser<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Fedora40个人使用配置</div>
+      <div>http://example.com/2024/09/03/Others/Fedora-40-个人使用配置/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/06/Others/JavaScript/" title="JavaScript">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/16/Others/PHP%E6%89%A9%E5%B1%95%E4%B9%8BSession/" title="PHP扩展之Session">
+                        <span class="hidden-mobile">PHP扩展之Session</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

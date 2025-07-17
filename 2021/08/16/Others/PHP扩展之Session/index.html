@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="session 配置配置约束： 如果配置后有相关函数， 说明配置支持通过函数动态设置 namesession.name string session.name 指定会话名以用做 cookie 的名字。只能由字母数字组成，默认为 PHPSESSID;  参见 session_name() 请求响应头部可以看到类似一下信息 1Set-Cookie: PHPSESSID&#x3D;t3qhqf1159vn41hr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP扩展之Session">
+<meta property="og:url" content="http://example.com/2021/08/16/Others/PHP%E6%89%A9%E5%B1%95%E4%B9%8BSession/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="session 配置配置约束： 如果配置后有相关函数， 说明配置支持通过函数动态设置 namesession.name string session.name 指定会话名以用做 cookie 的名字。只能由字母数字组成，默认为 PHPSESSID;  参见 session_name() 请求响应头部可以看到类似一下信息 1Set-Cookie: PHPSESSID&#x3D;t3qhqf1159vn41hr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-15T21:38:38.000Z">
+<meta property="article:modified_time" content="2025-07-17T22:48:09.840Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>PHP扩展之Session - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PHP扩展之Session"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-16 05:38" pubdate>
+          2021年8月16日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">PHP扩展之Session</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="session-配置"><a href="#session-配置" class="headerlink" title="session 配置"></a>session 配置</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>约束： 如果配置后有相关函数， 说明配置支持通过函数动态设置</p>
+<h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><p><code>session.name string</code> session.name 指定会话名以用做 cookie 的名字。只能由字母数字组成，默认为 PHPSESSID;  参见 session_name()</p>
+<p>请求响应头部可以看到类似一下信息</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Set-Cookie: <span class="hljs-attribute">PHPSESSID</span>=t3qhqf1159vn41hrem00r6v3b0; <span class="hljs-attribute">path</span>=/<br></code></pre></td></tr></table></figure>
+
+<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h3><p><code>session.auto_start bool</code> session.auto_start 指定会话模块是否在请求开始时自动启动一个会话。默认为 0（不启动）。 </p>
+<p>只有在有需要的时候使用 <code>session_start()</code> 开启， 默认关闭，可以节约资源</p>
+<h3 id="gc"><a href="#gc" class="headerlink" title="gc"></a>gc</h3><p>session 垃圾回收是通过两个参数控制的</p>
+<p><code>session.gc_probability int</code> session.gc_probability 与 session.gc_divisor 合起来用来管理 gc（garbage collection 垃圾回收）进程启动的概率。默认为 1。详见 session.gc_divisor。 </p>
+<p><code>session.gc_divisor int</code> session.gc_divisor 与 session.gc_probability 合起来定义了在每个会话初始化时启动 gc（garbage collection 垃圾回收）进程的概率。此概率用 gc_probability&#x2F;gc_divisor 计算得来。例如 1&#x2F;100 意味着在每个请求中有 1% 的概率启动 gc 进程。session.gc_divisor 默认为 100。 </p>
+<p><code>session.gc_maxlifetime int</code><br>    session.gc_maxlifetime 指定过了多少秒之后数据就会被视为“垃圾”并被清除。 垃圾搜集可能会在 session 启动的时候开始（ 取决于session.gc_probability 和 session.gc_divisor）。 </p>
+<p><strong>笔记</strong></p>
+<p>Session 由两部分组成， session_id 和 session_value ;</p>
+<p>session_value存储在服务器， 访问 session_value 需要 session_id， 生命周期由服务端维护； </p>
+<p>session_id 存储在客户端的 cookie 中， 生命周期由客户端维护；</p>
+<p>服务端 session 清理是概率性的， 可能存在延迟； 客户端 cookie 生命周期可以手动修改延长；因此在手动修改客户端cookie生命周期和session清理延迟的情况下， 出现 session 已经过期， 但是仍然有效的问题</p>
+<p>如何解决： </p>
+<ul>
+<li>session_value 记录 session 创建时间</li>
+<li>访问 session 是， 通过当前事件和创建时间判断 session 是否过期</li>
+</ul>
+<p>服务端通过概率事件的方式来启动GC， 可以提高服务性能</p>
+<p>可以通过配置 gc_probability 和 gc_divisor 为相同的值， 来解决GC延迟的问题， 但是会降低性能</p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p><code> session.use_cookies bool</code> session.use_cookies 指定是否在客户端用 cookie 来存放会话 ID。默认为 1（启用）。 </p>
+<p><code>session.use_only_cookies bool</code> session.use_only_cookies 指定是否在客户端仅仅使用 cookie 来存放会话 ID。。启用此设定可以防止有关通过 URL 传递会话 ID 的攻击。默认值为1（启用） </p>
+<p><code>session.cookie_lifetime int</code> session.cookie_lifetime 以秒数指定了发送到浏览器的 cookie 的生命周期。值为 0 表示“直到关闭浏览器”。默认为 0。参见 session_get_cookie_params() 和 session_set_cookie_params()。 </p>
+<p><code>session.cookie_path string</code> session.cookie_path 指定了要设定会话 cookie 的路径。默认为 &#x2F;。参见 session_get_cookie_params() 和 session_set_cookie_params()。 </p>
+<p><code>session.cookie_domain string</code> session.cookie_domain 指定了要设定会话 cookie 的域名。默认为无，表示根据 cookie 规范产生 cookie 的主机名。参见 session_get_cookie_params() 和 session_set_cookie_params()。 </p>
+<p><code>session.cookie_secure bool</code> session.cookie_secure 指定是否仅通过安全连接发送 cookie。默认为 off。此设定是 PHP 4.0.4 添加的。参见 session_get_cookie_params() 和 session_set_cookie_params()。 </p>
+<p><code>session.cookie_httponly bool</code> 设置 cookie 仅能够通过 HTTP 协议访问。 它意味着 cookie 无法通过类似 JavaScript 这样的脚本语言访问。 该设置可有效避免 XSS 攻击窃取身份（但并非所有浏览器都支持）。 </p>
+<p><code>session.cache_limiter string</code> session.cache_limiter 指定会话页面所使用的缓冲控制方法（ none&#x2F;nocache&#x2F; private&#x2F; private_no_expire&#x2F;public）。默认为 nocache。参见 session_cache_limiter() 文档查看各个值的含义。 </p>
+<p><code>session.cache_expire int</code> session.cache_expire 以分钟数指定缓冲的会话页面的存活期，此设定对 nocache 缓冲控制方法无效。默认为 180。参见 session_cache_expire()。 </p>
+<h3 id="禁用-cookie-后-session-如何生效"><a href="#禁用-cookie-后-session-如何生效" class="headerlink" title="禁用 cookie 后 session 如何生效"></a>禁用 cookie 后 session 如何生效</h3><p><code>session.use_trans_sid bool</code> session.use_trans_sid 指定是否启用透明 SID 支持。默认为 0（禁用）。 </p>
+<p><code>session.trans_sid_tags string</code> 开启支持透明 sid 时， session.trans_sid_tags 指定是否需要重写 HTML 标签来包含 session id。 默认为 a&#x3D;href,area&#x3D;href,frame&#x3D;src,input&#x3D;src,form&#x3D; form 是个特殊标签。 <input hidden="session_id" name="session_name"> 作为表单变量添加。 </p>
+<p><code>session.trans_sid_hosts string</code> 当透明 sid 支持开启时，session.trans_sid_hosts 设置了要重写包含 session 的主机名， 默认为 <code>$_SERVER[&#39;HTTP_HOST&#39;]</code>。 多个主机用半角逗号 “,” 分隔；主机名之间不能用空格。 例如 php.net,wiki.php.net,bugs.php.net。 </p>
+<p><code>session.sid_length int</code> 通过 session.sid_length 可以设置 session ID 字符串长度。 Session ID 的长度可以是在 22 到 256 之间。 默认是 32。 如果需要较好的兼容性可以设置为 32、40 等。 较长的 session ID 会更难猜测。 推荐至少要 32 个字符。 </p>
+<p><code>session.sid_bits_per_character int</code> session.sid_per_character 设置要编码 session ID 字符的比特数。 可能的设置有： ‘4’（0-9、a-f）、’5’（0-9、a-v）、’6’（0-9、a-z、A-Z、”-“、”,”）。 默认为 4。 更多的比特数会产生更强健的 session ID。 对于绝大多数环境，推荐值是 5。 </p>
+<p>面试可能会遇到这样的问题，如何解决呢？</p>
+<p>以 a 标签为例， 将 cookie 添加到 a 标签 src 属性之后， 这样服务器就可以拿到 a 标签地址</p>
+<p><code>trans_sid_tags</code> 配置支持的标签以及标签对应的属性</p>
+<p><strong>总结：</strong> 虽然解决问题， 但是带来了安全问题； 比如： 可以通过脚本轻易获取 cookie</p>
+<h3 id="upload"><a href="#upload" class="headerlink" title="upload"></a>upload</h3><p><code>session.upload_progress.enabled boolean </code> 启用上传进度跟踪，填充 <code>$_SESSION</code> 变量。默认为 1，启用。</p>
+<p><code>session.upload_progress.cleanup boolean</code> 读取所有 POST 数据（即上传完成）后立即清除进度信息。默认为 1，启用。</p>
+<p><code>session.upload_progress.prefix string</code> 用于<code>$_SESSION</code>中的上传进度键的前缀。这个键将与<code>$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code>的值相连接，以提供一个唯一的索引。默认为 <code>upload_progress_</code>。</p>
+<p><code>session.upload_progress.name string</code> 在<code>$_SESSION</code>中用于存储进度信息的键的名称。参见<code>session.upload_progress.prefix</code>。如果<code>$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code>没有通过或可用，上传进度将不会被记录。默认为 <code>&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</code>。</p>
+<p><code>session.upload_progress.freq mixed</code> 定义上传进度信息的更新频率。这可以以字节为单位（即 “每100字节后更新进度信息”），或以百分比为单位（即 “每收到整个文件大小的1%后更新进度信息”）。默认为 “1%”。</p>
+<p><code>session.upload_progress.min_freq</code> int 更新之间的最小延迟，以秒为单位。默认为“1”（一秒）。</p>
+<p>除非<code>session.upload_progress.enabled</code>被启用，并且<code>$_POST[ini_get(&quot;session.upload_progress.name&quot;)]</code>变量被设置，否则上传进度将不会被注册。关于此功能的细节，请参见会话上传进度。</p>
+<p> 当 session.upload_progress.enabled INI 选项开启时，PHP 能够在每一个文件上传时监测上传进度。 这个信息对上传请求自身并没有什么帮助，但在文件上传时应用可以发送一个POST请求到终端（例如通过XHR）来检查这个状态</p>
+<p>当一个上传在处理中，同时POST一个与INI中设置的<code>session.upload_progress.name</code>同名变量时，上传进度可以在<code>$_SESSION</code>中获得。 当PHP检测到这种POST请求时，它会在<code>$_SESSION</code>中添加一组数据, 索引是 <code>session.upload_progress.prefix </code>与 <code>session.upload_progress.name</code>连接在一起的值。 通常这些键值可以通过读取INI设置来获得，例如 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$key</span> = <span class="hljs-title function_ invoke__">ini_get</span>(<span class="hljs-string">&quot;session.upload_progress.prefix&quot;</span>) . <span class="hljs-title function_ invoke__">ini_get</span>(<span class="hljs-string">&quot;session.upload_progress.name&quot;</span>);<br><span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-variable">$key</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>通过将<code>$_SESSION[$key][&quot;cancel_upload&quot;]</code>设置为<code>true</code>，还可以取消一个正在处理中的文件上传。 当在同一个请求中上传多个文件，它仅会取消当前正在处理的文件上传和未处理的文件上传，但是不会移除那些已经完成的上传。 当一个上传请求被这么取消时，<code>$_FILES</code>中的error将会被设置为 <code>UPLOAD_ERR_EXTENSION</code>。</p>
+<p><code>session.upload_progress.freq </code>和 <code>session.upload_progress.min_freq</code> INI选项控制了上传进度信息应该多久被重新计算一次。 通过合理设置这两个选项的值，这个功能的开销几乎可以忽略不计。 </p>
+<h3 id="lazy-write"><a href="#lazy-write" class="headerlink" title="lazy_write"></a>lazy_write</h3><p><code>session.lazy_write bool</code> session.lazy_write，设置成 1 的含义是： 只有 session 数据发生变化时才需要重新写入。默认为开启状态 1。 </p>
+<p> session.serialize_handler string<br>    session.serialize_handler 定义用来序列化／反序列化的处理器名字。 当前支持 PHP 序列化格式 (名为 php_serialize)、 PHP PHP 内部格式 (名为 php 及 php_binary) 和 WDDX (名为 wddx)。 如果 PHP 编译时加入了 WDDX 支持，则只能用 WDDX。 php_serialize 在内部简单地直接使用 serialize&#x2F;unserialize 函数，并且不会有 php 和 php_binary 所具有的限制。 使用较旧的序列化处理器导致 $_SESSION 的索引既不能是数字也不能包含特殊字符(| and !) 。 使用 php_serialize 避免脚本退出时，数字及特殊字符索引导致出错。 默认使用 php。 </p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PHP扩展之Session</div>
+      <div>http://example.com/2021/08/16/Others/PHP扩展之Session/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/03/Others/Fedora-40-%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE/" title="Fedora40个人使用配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Fedora40个人使用配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/15/Others/PHP-%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81/" title="PHP 版本支持">
+                        <span class="hidden-mobile">PHP 版本支持</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

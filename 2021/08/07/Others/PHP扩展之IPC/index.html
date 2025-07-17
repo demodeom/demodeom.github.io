@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PHP操作消息队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP扩展之IPC">
+<meta property="og:url" content="http://example.com/2021/08/07/Others/PHP%E6%89%A9%E5%B1%95%E4%B9%8BIPC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PHP操作消息队列">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-06T21:36:02.000Z">
+<meta property="article:modified_time" content="2025-07-17T22:48:09.840Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="共享内存">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>PHP扩展之IPC - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PHP扩展之IPC"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-07 05:36" pubdate>
+          2021年8月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">PHP扩展之IPC</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>PHP操作消息队列</p>
+<span id="more"></span>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>IPC（Inter-Process Communication，进程间通信）。进程间通信是指两个进程的数据之间产生交互</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 <code> --enable-sysvmsg</code> 编译 PHP</p>
+<p>检查 <code>sysvsem</code> 是否安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">➜  ~ php -m | grep sysvmsg<br>sysvmsg<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="主要函数"><a href="#主要函数" class="headerlink" title="主要函数"></a>主要函数</h2><ul>
+<li>msg_get_queue - 创建或附加到一个消息队列上</li>
+<li>msg_queue_exists - 检查一个消息队列是否存在</li>
+<li>msg_receive - 从一个消息队列中接收一个消息</li>
+<li>msg_remove_queue - 销毁一个消息队列</li>
+<li>msg_send - 向一个消息队列发送一条消息</li>
+<li>msg_set_queue - 设置消息队列数据结构中的信息</li>
+<li>msg_stat_queue - 返回来自消息队列数据结构的信息</li>
+</ul>
+<h3 id="msg-get-queue"><a href="#msg-get-queue" class="headerlink" title="msg_get_queue"></a>msg_get_queue</h3><p><strong>语法:</strong></p>
+<p><code>msg_get_queue(int $key, int $permissions = 0666): SysvMessageQueue|false</code></p>
+<p><strong>功能:</strong> </p>
+<p>msg_get_queue()返回一个ID，可用于访问具有给定键的System V消息队列。第一次调用会创建有可选权限的消息队列。第二次调用msg_get_queue()相同的键会返回一个不同的消息队列标识符，但这两个标识符访问的是同一个底层消息队列。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>key  消息队列数字 ID</li>
+<li>permissions 队列权限。默认为0666。如果消息队列已经存在，权限将被忽略。</li>
+</ul>
+<p><strong>返回值:</strong> </p>
+<p>返回SysvMessageQueue实例，可用于访问System V消息队列，或者在失败时返回false。</p>
+<h3 id="msg-queue-exists"><a href="#msg-queue-exists" class="headerlink" title="msg_queue_exists"></a>msg_queue_exists</h3><p><strong>语法:</strong></p>
+<p><code>msg_queue_exists(int $key): bool</code></p>
+<p>检查消息队列键是否存在。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>key 队列键。</li>
+</ul>
+<p><strong>返回值:</strong> </p>
+<p>成功时返回 true， 或者在失败时返回 false。</p>
+<h3 id="msg-receive"><a href="#msg-receive" class="headerlink" title="msg_receive"></a>msg_receive</h3><p><strong>语法:</strong></p>
+<p><code>msg_receive(     SysvMessageQueue $queue,     int $desired_message_type,     int &amp;$received_message_type,     int $max_message_size,     mixed &amp;$message,     bool $unserialize = true,     int $flags = 0,     int &amp;$error_code = null ): bool</code></p>
+<p><strong>功能:</strong> </p>
+<p>msg_receive() 将接收来自desired_message_type 指定类型的指定队列的第一条消息。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>queue 消息队列。</li>
+<li>desired_message_type 如果desired_message_type为0，则返回队列中最前面的那个消息。如果desired_message_type大于0，那么将返回该类型的第一条消息。如果desired_message_type小于0，将读取队列中第一个类型小于或等于desired_message_type绝对值的消息。如果没有符合条件的消息，你的脚本将等待，直到队列中出现合适的消息。你可以通过在flags参数中指定MSG_IPC_NOWAIT来防止脚本阻塞。</li>
+<li>received_message_type 收到的信息的类型将被存储在这个参数中。</li>
+<li>max_message_size 要接受的消息的最大尺寸由max_message_size指定；如果队列中的消息大于这个尺寸，该函数将失败（除非你设置了下面描述的标志）。</li>
+<li>message 收到的信息将被储存在信息中，除非接收信息时有错误。</li>
+<li>unserialize 如果设置为 “true”，消息会被当作使用与会话模块相同的机制进行序列化处理。消息将被取消序列化，然后返回给你的脚本。这允许你轻松地从其他PHP脚本中接收数组或复杂的对象结构，或者如果你使用WDDX序列化器，从任何WDDX兼容的源中接收。如果 unserialize 为 false，则消息将作为二进制安全字符串返回。</li>
+<li>flags 可选标志允许您将标志传递给低级 msgrcv 系统调用。它默认为 0，但您可以指定一个或多个以下值（通过将它们相加或或运算在一起）。</li>
+<li>error_code 如果函数失败，可选的 error_code 将被设置为系统 errno 变量的值。</li>
+</ul>
+<center><b>msg_receive 的 flag</b></center>
+
+<table>
+<thead>
+<tr>
+<th align="left">标志</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MSG_IPC_NOWAIT</td>
+<td align="left">如果没有所需信息类型的信息，立即返回，不要等待。该函数将失败，并返回一个对应于MSG_ENOMSG的整数值。</td>
+</tr>
+<tr>
+<td align="left">MSG_EXCEPT</td>
+<td align="left">将此标志与大于 0 的 desired_message_type 结合使用将导致函数接收不等于 desired_message_type 的第一条消息。</td>
+</tr>
+<tr>
+<td align="left">MSG_NOERROR</td>
+<td align="left">如果消息长于max_message_size，设置这个标志将把消息截断到max_message_size，并且不会发出错误信号。</td>
+</tr>
+</tbody></table>
+<p><strong>返回值:</strong> </p>
+<p>成功时返回 true， 或者在失败时返回 false。</p>
+<p>成功完成后，消息队列数据结构更新如下：msg_lrpid 设置为调用进程的进程 ID，msg_qnum 减 1，msg_rtime 设置为当前时间。</p>
+<h3 id="msg-remove-queue"><a href="#msg-remove-queue" class="headerlink" title="msg_remove_queue"></a>msg_remove_queue</h3><p><strong>语法:</strong></p>
+<p>msg_remove_queue(SysvMessageQueue $queue): bool</p>
+<p><strong>功能:</strong> </p>
+<p>msg_remove_queue() 销毁队列指定的消息队列。只有当所有进程都完成了消息队列的工作并且需要释放它所持有的系统资源时才使用此功能。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>queue 消息队列。</li>
+</ul>
+<p><strong>返回值:</strong> </p>
+<p>成功时返回 true， 或者在失败时返回 false。</p>
+<h3 id="msg-send"><a href="#msg-send" class="headerlink" title="msg_send"></a>msg_send</h3><p><strong>语法:</strong></p>
+<p><code>msg_send(     SysvMessageQueue $queue,     int $message_type,     string|int|float|bool $message,     bool $serialize = true,     bool $blocking = true,     int &amp;$error_code = null ): bool</code></p>
+<p><strong>功能:</strong> </p>
+<p>msg_send() 将 message_type 类型的消息（必须大于 0）发送到 queue 指定的消息队列。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>queue 消息队列。</li>
+<li>message_type 消息的类型（必须大于 0）</li>
+<li>message 消息的正文。</li>
+<li>serialize 可选的序列化控制消息的发送方式。 serialize 默认为 true，这意味着消息在发送到队列之前使用与会话模块相同的机制进行序列化。这允许将复杂的数组和对象发送到其他 PHP 脚本，或者如果您使用的是 WDDX 序列化程序，则可以发送到任何 WDDX 兼容客户端。</li>
+<li>blocking 如果消息太大而无法放入队列，您的脚本将等待另一个进程从队列中读取消息并释放足够的空间来发送您的消息。这称为阻塞；您可以通过将可选的阻塞参数设置为 false 来防止阻塞，在这种情况下，如果消息对于队列来说太大，msg_send() 将立即返回 false，并将可选的 error_code 设置为 MSG_EAGAIN，表示您应该尝试发送您的消息再过一会儿。</li>
+<li>error_code 如果函数失败，可选的错误代码将被设置为系统 errno 变量的值。</li>
+</ul>
+<p>如果提供的serialize设置为false，必须是字符串、int、float或bool类型。在其他情况下，将发出一个警告。</p>
+<p><strong>返回值:</strong> </p>
+<p>成功时返回 true， 或者在失败时返回 false。</p>
+<p>成功完成后，消息队列数据结构被更新如下：msg_lspid被设置为调用进程的进程ID，msg_qnum被递增1，msg_stime被设置为当前时间。</p>
+<h3 id="msg-set-queue"><a href="#msg-set-queue" class="headerlink" title="msg_set_queue"></a>msg_set_queue</h3><p><strong>语法:</strong></p>
+<p><code>msg_set_queue(SysvMessageQueue $queue, array $data): bool</code></p>
+<p><strong>功能:</strong> </p>
+<p>msg_set_queue() 允许您更改底层消息队列数据结构的 msg_perm.uid、msg_perm.gid、msg_perm.mode 和 msg_qbytes 字段的值。</p>
+<p>改变数据结构将要求 PHP 以创建队列的同一用户身份运行，拥有该队列（由现有的 msg_perm.xxx 字段决定），或以 root 权限运行。要将 msg_qbytes 的值提高到系统定义的极限以上，需要 root 权限。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>queue 消息队列。</li>
+<li>data 你通过设置数据数组中你需要的键值来指定你所需要的值。</li>
+</ul>
+<p>成功时返回 true， 或者在失败时返回 false。</p>
+<p><strong>语法:</strong></p>
+<p><code>msg_stat_queue(SysvMessageQueue $queue): array|false</code></p>
+<p><strong>功能:</strong> </p>
+<p>msg_stat_queue() 返回队列指定的消息队列的消息队列元数据。例如，这有助于确定哪个进程发送了刚刚收到的消息。</p>
+<p><strong>参数:</strong> </p>
+<ul>
+<li>queue 消息队列。</li>
+</ul>
+<p><strong>返回值:</strong> </p>
+<p>成功时，返回值是一个数组，其键和值具有以下含义：</p>
+<center><b>msg_stat_queue 的数组结构</b></center>
+
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">msg_perm.uid</td>
+<td align="left">队列所有者的 uid。</td>
+</tr>
+<tr>
+<td align="left">msg_perm.gid</td>
+<td align="left">队列所有者的 gid。</td>
+</tr>
+<tr>
+<td align="left">msg_perm.mode</td>
+<td align="left">队列的文件访问模式。</td>
+</tr>
+<tr>
+<td align="left">msg_stime</td>
+<td align="left">最后一条消息发送到队列的时间。</td>
+</tr>
+<tr>
+<td align="left">msg_rtime</td>
+<td align="left">从队列中接收到最后一条消息的时间。</td>
+</tr>
+<tr>
+<td align="left">msg_ctime</td>
+<td align="left">上次更改队列的时间。</td>
+</tr>
+<tr>
+<td align="left">msg_qnum</td>
+<td align="left">等待从队列中读取的消息数。</td>
+</tr>
+<tr>
+<td align="left">msg_qbytes</td>
+<td align="left">一个消息队列中允许的最大字节数。在 Linux 上，可以通过 &#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;msgmnb 读取和修改此值。</td>
+</tr>
+<tr>
+<td align="left">msg_lspid</td>
+<td align="left">将最后一条消息发送到队列的进程的 pid。</td>
+</tr>
+<tr>
+<td align="left">msg_lrpid</td>
+<td align="left">从队列接收最后一条消息的进程的 pid。</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/PHP/" class="category-chain-item">PHP</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/" class="print-no-link">#共享内存</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PHP扩展之IPC</div>
+      <div>http://example.com/2021/08/07/Others/PHP扩展之IPC/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年8月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/12/Others/Redis-%E5%AE%89%E8%A3%85/" title="Redis - 安装">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Redis - 安装</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/07/Others/PHP%E6%89%A9%E5%B1%95%E4%B9%8B%E5%86%85%E5%AD%98%E5%85%B1%E4%BA%AB/" title="PHP扩展之共享内存">
+                        <span class="hidden-mobile">PHP扩展之共享内存</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
