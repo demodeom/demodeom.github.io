@@ -1,7 +1,9 @@
 ---
 title: Flatpak 常用命令
 date: 2025-07-18 06:24:58
+index_img: https://s21.ax1x.com/2025/10/02/pVT1Klq.png
 tags:
+	- Linux
 ---
 
 Flatpak 经常使用的命令和参数详细解释。

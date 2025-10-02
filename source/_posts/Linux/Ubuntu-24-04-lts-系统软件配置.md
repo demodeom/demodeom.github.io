@@ -1,7 +1,9 @@
 ---
-title: Ubuntu 24.04 lts 系统软件配置
+title: Ubuntu Desktop 24.04 个人配置
 date: 2024-12-15 21:16:17
+index_img: https://s21.ax1x.com/2025/09/28/pVopLnK.jpg
 tags:
+      - Linux
 ---
 
 Ubuntu 24.04 lts 系统软件配置

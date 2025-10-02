@@ -1,7 +1,10 @@
 ---
-title: '[LinuxDesktop]FlatHub常用软件'
+title: 'FlatHub软件列表'
 date: 2025-07-18 06:50:45
+index_img: https://s21.ax1x.com/2025/10/02/pVT1Klq.png
 tags:
+	- Linux
+	- FlatHub
 ---
 
 FlatHub 仓库中个人常用软件
@@ -162,3 +165,26 @@ flatpak install  -y flathub com.brave.Browser
 flatpak install flathub com.opera.Opera
 ```
 
+### Insomnia-API接口测试工具
+
+```bash
+flatpak install flathub rest.insomnia.Insomnia
+```
+
+### Flameshot-截图工具
+
+```bash
+flatpak install flathub org.flameshot.Flameshot
+```
+
+### Gcolor3-取色工具
+
+```bash
+flatpak install flathub nl.hjdskes.gcolor3
+```
+
+### LocalSend-局域网文件传输
+
+```bash
+flatpak install flathub org.localsend.localsend_app
+```
