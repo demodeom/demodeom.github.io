@@ -33,6 +33,7 @@ Fedora网卡优先级调整
 ```bash
 nmcli connection show
 ```
+
 输出如下
 ```
 NAME             UUID                                  TYPE      DEVICE 

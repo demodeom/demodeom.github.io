@@ -123,6 +123,9 @@ git config --global user.name "demo"
 
 # 配置用户邮箱
 git config --global user.email "demodeom@example.com"
+
+# 关闭路径转换，解决中文文件名显示问题
+git config --global core.quotepath false
 ```
 
 ### 1.4 输入法 Fcitx5
