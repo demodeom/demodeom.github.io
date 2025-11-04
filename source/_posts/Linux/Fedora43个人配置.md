@@ -1,12 +1,12 @@
 ---
-title: Fedora42个人配置
+title: Fedora43个人配置
 date: 2025-10-02 03:32:03
 tags:
     - Linux 
 index_img: https://s21.ax1x.com/2025/10/02/pVT1Klq.png
 ---
 
-Fedora42个人配置
+Fedora43个人配置
 
 <!-- more -->
 
@@ -18,7 +18,7 @@ Fedora42个人配置
 
 #### 1.1.1 阿里云DNS
 
-推荐案例云公共的DNS [https://alidns.com/](https://alidns.com/)
+推荐案例云公共的DNS https://alidns.com/
 
 IP4
 
@@ -71,15 +71,11 @@ rtt min/avg/max/mdev = 120.394/120.504/120.613/0.089 ms
 
 ```
 
-
-
-
-
 ### 1.2 镜像
 
 清华大学 Fedora 镜像使用
 
-```bash
+```
 sudo sed -e 's|^metalink=|#metalink=|g' \
     -e 's|^#baseurl=http://download.example/pub/fedora/linux|baseurl=https://mirrors.tuna.tsinghua.edu.cn/fedora|g' \
     -i.bak \
@@ -89,7 +85,7 @@ sudo sed -e 's|^metalink=|#metalink=|g' \
 
 修改镜像后， 建议升级更新系统，然后重启电脑
 
-```bash
+```
 sudo dnf update
 ```
 
@@ -106,19 +102,19 @@ sudo dnf update
 - mpv – 轻量级命令行视频播放器（可定制性强）。
 - ffmpeg – 音视频处理工具（转码/剪辑/流媒体）。
 
-```bash
-sudo dnf install -y curl wget zsh git vim vlc mpv ffmpeg
+```
+sudo dnf install -y curl wget zsh git vim
 ```
 
 #### 1.3.2 终端美化
 
-```bash
+```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 #### 1.3.3 Git 配置
 
-```bash
+```
 # 设置默认分之为 main
 git config --global init.defaultBranch main
 
@@ -129,37 +125,33 @@ git config --global user.name "demo"
 git config --global user.email "demodeom@example.com"
 ```
 
-
-
 ### 1.4 输入法 Fcitx5
 
 1. 安装 fcitx5
 
-   ```bash
+   ```
    sudo dnf install fcitx5 fcitx5-chinese-addons fcitx5-configtool
    ```
 
-2. 使用 **gnome tweaks** 将 fcitx5 添加到 开机自启动 软件列表
-
-3. 启动软件 **Fcitx5**
-
-4. 启动软件 **Fcitx5 Configuration**, 将 **PinYin** 添加到 输入法分组， 点击 **应用** 按钮， 点击 **确定** 按钮
-
-5. 重启系统
+1. 使用 **gnome tweaks** 将 fcitx5 添加到 开机自启动 软件列表
+2. 启动软件 **Fcitx5**
+3. 启动软件 **Fcitx5 Configuration**, 将 **PinYin** 添加到 输入法分组， 点击 **应用** 按钮， 点击 **确定** 按钮
+4. 重启系统
 
 中文字体
 
-```bash
+```
 sudo dnf install wqy-microhei-fonts wqy-zenhei-fonts 
 ```
 
 建议修改文件 **/etc/environment**
 
-```bash
+```
 sudo vim /etc/environment
 ```
 
 添加以下内容
+
 ```
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
@@ -169,40 +161,91 @@ SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
 ```
 
-
 ### 1.5 软件管理
 
 #### 1.5.1 Flatpak
 
-```bash
+```
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 ```
 
 #### 1.5.2 Gear Lever
 
-```bash
+```
 flatpak install flathub it.mijorus.gearlever
 ```
 
-## 2. 代理
+### 1.6 安装完整的 ffmpeg
+
+```bash
+# 启用 RPM Fusion 仓库
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# 更新并安装 FFmpeg
+sudo dnf update
+sudo dnf install ffmpeg ffmpeg-devel --allowerasing
+```
+
+**Fedora 默认仓库的 FFmpeg特点：**
+
+- **软件包名**：通常是 `ffmpeg` 或 `ffmpeg-free`
+- **编解码器支持**：只包含开源、无专利争议的编解码器
+- **限制**：
+  - 不支持 H.264、H.265、MP3 等有专利的编解码器
+  - 缺少 AAC、MP3 编码支持
+  - 没有 NVIDIA CUDA 等硬件加速支持
+- **法律合规**：完全符合 Fedora 的严格开源政策
+
+**RPM Fusion 仓库的 FFmpeg 特点：**
+
+- **软件包名**：`ffmpeg`（来自 rpmfusion-free 和 nonfree）
+- **编解码器支持**：包含完整编解码器支持
+- **优势**：
+  - 支持 H.264、H.265/HEVC 编解码
+  - 支持 MP3、AAC 音频编解码
+  - 包含硬件加速支持（CUDA、VAAPI等）
+  - 支持更多视频格式和容器
+
+### 1.7 视频播放器
+
+```bash
+sudo dnf install vlc mpv
+```
+
+
+
+## 2. 代理    
 
 ### 2.1 三毛导航
 
 **便宜机场**
 
-- 三毛导航 [https://三毛导航.com](https://三毛导航.com)
+- 三毛导航 [https://三毛导航.com](https://三毛导航.com/)
+
+
+
+### Flclash
+
+
+
+```
+sudo dnf install ~/Downloads/FlClash-0.8.90-linux-amd64.rpm
+```
+
+
 
 ### 2.2 Clash Verge Rev
 
 **最新版本下载地址**
 
--  GitHub [https://github.com/clash-verge-rev/clash-verge-rev/releases](https://github.com/clash-verge-rev/clash-verge-rev/releases)
--  GitHub 镜像 bgithub.xyz  [https://bgithub.xyz/clash-verge-rev/clash-verge-rev/releases](https://bgithub.xyz/clash-verge-rev/clash-verge-rev/releases)
+- GitHub https://github.com/clash-verge-rev/clash-verge-rev/releases
+- GitHub 镜像 bgithub.xyz  https://bgithub.xyz/clash-verge-rev/clash-verge-rev/releases
 
 以 v2.4.2 为例
 
-```bash
+```
 #!/bin/bash
 
 # 定义版本号变量
@@ -230,22 +273,22 @@ sudo dnf install -y  Clash.Verge-${VERSION}-1.x86_64.rpm
 
 **常用 Tampermonkey 脚本**
 
--  [LinkSwift](https://greasyfork.org/zh-CN/scripts/449291-linkswift) <del>作者已删除</del>
--  [知乎美化](https://greasyfork.org/en/scripts/412212-%E7%9F%A5%E4%B9%8E%E7%BE%8E%E5%8C%96)
--  [Github 增强](https://greasyfork.org/zh-CN/scripts/412245-github-增强-高速下载)
--  [CSDN 人性化脚本优化](https://greasyfork.org/zh-CN/scripts/378351-持续更新-csdn广告完全过滤-人性化脚本优化-不用再登录了-让你体验令人惊喜的崭新csdn)
+- [LinkSwift](https://greasyfork.org/zh-CN/scripts/449291-linkswift) ~~作者已删除~~
+- [知乎美化](https://greasyfork.org/en/scripts/412212-知乎美化)
+- [Github 增强](https://greasyfork.org/zh-CN/scripts/412245-github-增强-高速下载)
+- [CSDN 人性化脚本优化](https://greasyfork.org/zh-CN/scripts/378351-持续更新-csdn广告完全过滤-人性化脚本优化-不用再登录了-让你体验令人惊喜的崭新csdn)
 
 ## 4. Gnome
 
 ### gnome tweaks
 
-```bash
+```
 sudo dnf install gnome-tweaks
 ```
 
 ### ExtensionManager
 
-```bash
+```
 flatpak install -y flathub com.mattjakeman.ExtensionManager
 ```
 
@@ -260,7 +303,7 @@ flatpak install -y flathub com.mattjakeman.ExtensionManager
 
 ### Typora
 
-```bash
+```
 flatpak install flathub io.typora.Typora
 ```
 
@@ -274,6 +317,8 @@ GitHub 镜像地址 https://bgithub.xyz/Genymobile/scrcpy
 # 定义版本号
 SCRCPY_VERSION="v3.3.3"
 
+cd ~/Downloads
+
 # 下载 scrcpy
 wget "https://gh-proxy.com/https://github.com/Genymobile/scrcpy/releases/download/${SCRCPY_VERSION}/scrcpy-linux-x86_64-${SCRCPY_VERSION}.tar.gz"
 
@@ -281,25 +326,23 @@ wget "https://gh-proxy.com/https://github.com/Genymobile/scrcpy/releases/downloa
 tar -xvf "scrcpy-linux-x86_64-${SCRCPY_VERSION}.tar.gz" && rm "scrcpy-linux-x86_64-${SCRCPY_VERSION}.tar.gz"
 
 # 将软件安装到 /opt 目录
-sudo mv "scrcpy-linux-x86_64-${SCRCPY_VERSION}" /opt/scrcpy
+mv "scrcpy-linux-x86_64-${SCRCPY_VERSION}" $HOME/DevTools/scrcpy
 
 # 修改图标文件权限
-sudo chmod 644 /opt/scrcpy/icon.png
+sudo chmod 644 $HOME/DevTools/scrcpy/icon.png
 
 # 创建快捷方式
 DESKTOP_FILE="$HOME/.local/share/applications/scrcpy.desktop"
-echo '[Desktop Entry]' > "$DESKTOP_FILE"
-echo 'Version=1.0' >> "$DESKTOP_FILE"
-echo 'Type=Application' >> "$DESKTOP_FILE"
-echo 'Name=Scrcpy' >> "$DESKTOP_FILE"
-echo 'Comment=Android screen mirroring' >> "$DESKTOP_FILE"
-echo 'Exec=/opt/scrcpy/scrcpy' >> "$DESKTOP_FILE"
-echo 'Icon=/opt/scrcpy/icon.png' >> "$DESKTOP_FILE"
-echo 'Terminal=false' >> "$DESKTOP_FILE"
-echo 'Categories=Utility;' >> "$DESKTOP_FILE"
+echo "[Desktop Entry]" > "$DESKTOP_FILE"
+echo "Version=1.0" >> "$DESKTOP_FILE"
+echo "Type=Application" >> "$DESKTOP_FILE"
+echo "Name=Scrcpy" >> "$DESKTOP_FILE"
+echo "Comment=Android screen mirroring" >> "$DESKTOP_FILE"
+echo "Exec=$HOME/DevTools/scrcpy/scrcpy" >> "$DESKTOP_FILE"
+echo "Icon=$HOME/DevTools/scrcpy/icon.png" >> "$DESKTOP_FILE"
+echo "Terminal=false" >> "$DESKTOP_FILE"
+echo "Categories=Utility;" >> "$DESKTOP_FILE"
 ```
-
-
 
 ## 开发环境
 
@@ -307,46 +350,56 @@ echo 'Categories=Utility;' >> "$DESKTOP_FILE"
 
 #### 环境变量配置
 
-```bash
+```
 echo 'export PATH=$PATH:$HOME/Android/Sdk/platform-tools' >> ~/.zshrc
 ```
-
 
 ## 下载工具
 
 ### Motrix
 
-```bash
+```
 flatpak install flathub net.agalwood.Motrix
 ```
 
 ### qBittorrent
 
-```bash
+```
 flatpak install flathub org.qbittorrent.qBittorrent
 ```
 
 ### XDM
 
-Xtreme Download Manager [https://github.com/subhra74/xdm/releases](https://github.com/subhra74/xdm/releases)
+Xtreme Download Manager https://github.com/subhra74/xdm/releases
 
-```bash
-https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
 ```
-
-```bash
+https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
 https://ghproxy.cn/https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
 ```
-
-
 
 ## 文本编辑器
 
 ### Sublime Text 4
 
+[Sublime Text 4 官网安装文档](https://www.sublimetext.com/docs/linux_repositories.html#dnf)
+
+```bash
+# Install the GPG key: 
+sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+
+# Select the stable channel to use
+sudo dnf config-manager addrepo --from-repofile=https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+
+# Update dnf and install Sublime Text
+sudo dnf install sublime-text
+```
+
+
+
 ```bash
 wget https://download.sublimetext.com/sublime-text-4180-1.x86_64.rpm
 sudo rpm -i sublime-text-4180-1.x86_64.rpm
+
 ```
 
 Sublime Text 4 个人配置
@@ -364,12 +417,9 @@ Sublime Text 4 个人扩展
 
 ### Typora
 
-```bash
+```
 flatpak install flathub io.typora.Typora
 ```
-
-
-
 
 ## 开发工具
 
@@ -383,31 +433,31 @@ flatpak install flathub com.sublimemerge.App
 
 安装 docker
 
-```bash
+```
 sudo dnf install docker -y
 ```
 
 开机自启动 docker
 
-```bash
+```
 sudo systemctl enable docker.service 
 ```
 
 启动 docker
 
-```bash
+```
 sudo systemctl start docker.service 
 ```
 
 解决 sudo 权限问题（重新登录用户生效）
 
-```bash
+```
 sudo usermod -aG docker $USER
 ```
 
 [Docker/DockerHub 国内镜像源/加速列表-长期维护](https://xuanyuan.me/blog/archives/1154)
 
-```bash
+```
 # 创建配置文件目录
 sudo mkdir -p /etc/docker
 # 创建配置文件
@@ -430,7 +480,7 @@ sudo systemctl restart docker
 
 Firefox Driver https://github.com/mozilla/geckodriver/releases
 
-```bash
+```
 wget https://cors.isteed.cc/github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz
 tar -xvf geckodriver-v0.35.0-linux64.tar.gz
 sudo mv geckodriver /usr/local/bin
@@ -438,9 +488,9 @@ sudo mv geckodriver /usr/local/bin
 
 ### Nvm-Node Version Manager
 
-Node Version Manager [https://github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm)
+Node Version Manager https://github.com/nvm-sh/nvm
 
-```bash
+```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 source ~/.zshrc
 nvm install --lts
@@ -449,23 +499,23 @@ npm install nrm  -g --registry=https://registry.npmmirror.com
 
 ### Pyenv-Python多版本管理
 
-**Simple Python Version Management** [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+**Simple Python Version Management** https://github.com/pyenv/pyenv
 
 - 安装 Pyenv
 
-```bash
+```
 curl https://pyenv.run | bash
 ```
 
-- 安装依赖: Fedora 22 and above: [https://github.com/pyenv/pyenv/wiki#suggested-build-environment](https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
+- 安装依赖: Fedora 22 and above: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 
-```bash
+```
 sudo dnf install make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2
 ```
 
 - 追加以下内容到 **~/.zshrc** 文件末尾
 
-```shell
+```
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -473,13 +523,13 @@ eval "$(pyenv init -)"
 
 - 临时生效系统环境变量
 
-```bash
+```
 source ~/.zshrc
 ```
 
 - 下载 Python 源码
 
-```bash
+```
 mkdir ~/.pyenv/cache
 cd ~/.pyenv/cache
 wget https://mirrors.huaweicloud.com/python/3.10.14/Python-3.10.14.tar.xz
@@ -487,39 +537,36 @@ wget https://mirrors.huaweicloud.com/python/3.10.14/Python-3.10.14.tar.xz
 
 - 安装 3.10.14
 
-```bash
+```
 pyenv install 3.10.14
 ```
 
 - 设置默认Python版本
 
-```bash
+```
 pyenv global 3.10.14
 ```
 
 - 镜像配置
 
-```bash
+```
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip config set install.trusted-host pypi.tuna.tsinghua.edu.cn
 ```
-
 
 ## 虚拟机
 
 ### Virtual Box
 
+下载地址 https://www.virtualbox.org/wiki/Linux_Downloads
 
-下载地址 [https://www.virtualbox.org/wiki/Linux_Downloads](https://www.virtualbox.org/wiki/Linux_Downloads)
-
-
-```bash
+```
 sudo rpm -i ~/Downloads/VirtualBox-7.1-7.1.4_165100_fedora40-1.x86_64.rpm
 ```
 
 可能需要以下依赖
 
-```bash
+```
 sudo dnf install gtk2 kernel-devel
 ```
 
@@ -529,23 +576,13 @@ sudo dnf install gtk2 kernel-devel
 sudo usermod -aG vboxusers $USER
 ```
 
-
 ### 火狐浏览器
 
 使用 **软件商店** 、Flatpak、DNF 等工具安装的 Firefox 浏览器， 可能会存在某些问题， 建议使用 Firefox 提供的二进制文件进行安装
 
-下载地址 [https://www.firefox.com.cn/download/#product-desktop-release](https://www.firefox.com.cn/download/#product-desktop-release)
+下载地址 https://www.firefox.com.cn/download/#product-desktop-release
 
 ```
 https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US
-```
-
-
-
-```bash
-cd ~/Downloads
-tar xjf firefox-*.tar.bz2
-sudo mv firefox /opt
-sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+cd ~/Downloadstar xjf firefox-*.tar.bz2sudo mv firefox /optsudo ln -s /opt/firefox/firefox /usr/local/bin/firefoxsudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
 ```
