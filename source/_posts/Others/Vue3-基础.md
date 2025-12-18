@@ -138,7 +138,7 @@ Done. Now run:
   const num = ref()
 
   console.log(num.value)  // undefined
-
+  
 </script>
 ```
 

@@ -6,7 +6,9 @@ tags:
 index_img: https://s21.ax1x.com/2025/10/02/pVT1Klq.png
 ---
 
-Fedora43个人配置
+Fedora（发音：英 [fɪ'dɔːrə]，美 [fɪ'dɔrə]）是一个由Fedora项目社区开发、红帽公司赞助的开源操作系统，也被称为Fedora Linux.
+
+随着版本的更新，Fedora不断引入新技术和桌面环境。Fedora 40版本则更新了GNOME桌面至46版，并首次自带PyTorch。
 
 <!-- more -->
 
@@ -252,7 +254,7 @@ sudo dnf install ~/Downloads/FlClash-0.8.90-linux-amd64.rpm
 #!/bin/bash
 
 # 定义版本号变量
-VERSION="2.4.2"
+VERSION="2.4.3"
 
 # 构造下载 URL
 URL="https://bgithub.xyz/clash-verge-rev/clash-verge-rev/releases/download/v${VERSION}/Clash.Verge-${VERSION}-1.x86_64.rpm"
@@ -354,31 +356,33 @@ echo "Categories=Utility;" >> "$DESKTOP_FILE"
 #### 环境变量配置
 
 ```
+echo '' >> ~/.zshrc
+echo 'Android Studio Platform Tools' >> ~/.zshrc
 echo 'export PATH=$PATH:$HOME/Android/Sdk/platform-tools' >> ~/.zshrc
 ```
 
 ## 下载工具
 
-### Motrix
+### Motrix qBittorrent
 
 ```
-flatpak install flathub net.agalwood.Motrix
+flatpak install flathub net.agalwood.Motrix org.qbittorrent.qBittorrent
 ```
 
-### qBittorrent
+<!-- ### qBittorrent
 
 ```
 flatpak install flathub org.qbittorrent.qBittorrent
-```
+``` -->
 
-### XDM
+<!-- ### XDM
 
 Xtreme Download Manager https://github.com/subhra74/xdm/releases
-
-```
+ -->
+<!-- ```
 https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
 https://ghproxy.cn/https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
-```
+``` -->
 
 ## 文本编辑器
 
